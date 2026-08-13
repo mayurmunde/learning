@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CCAR-P Field Notes — Architect Professional Study Companion</title>
+<title>Claude Certification Field Notes</title>
 <style>
 @font-face {
   font-family: 'Big Shoulders Display';
@@ -32,189 +32,136 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --canvas:#0D1512;
-    --panel:#15201C;
-    --panel-2:#1B2823;
-    --line:#2B3934;
-    --ink:#E6EFE9;
-    --ink-dim:#93A69D;
-    --signal:#3CE3B6;
-    --signal-ink:#052A20;
-    --flag:#F0A860;
-    --flag-bg:#2A2013;
-    --danger:#F0796A;
+    --canvas:#0D1512; --panel:#15201C; --panel-2:#1B2823; --line:#2B3934;
+    --ink:#E6EFE9; --ink-dim:#93A69D; --signal:#3CE3B6; --signal-ink:#052A20;
+    --flag:#F0A860; --flag-bg:#2A2013; --danger:#F0796A;
   }
 }
 :root[data-theme="dark"]{
-  --canvas:#0D1512;
-  --panel:#15201C;
-  --panel-2:#1B2823;
-  --line:#2B3934;
-  --ink:#E6EFE9;
-  --ink-dim:#93A69D;
-  --signal:#3CE3B6;
-  --signal-ink:#052A20;
-  --flag:#F0A860;
-  --flag-bg:#2A2013;
-  --danger:#F0796A;
+  --canvas:#0D1512; --panel:#15201C; --panel-2:#1B2823; --line:#2B3934;
+  --ink:#E6EFE9; --ink-dim:#93A69D; --signal:#3CE3B6; --signal-ink:#052A20;
+  --flag:#F0A860; --flag-bg:#2A2013; --danger:#F0796A;
 }
 
 *{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;}
-body{
-  margin:0;
-  background:var(--canvas);
-  color:var(--ink);
-  font-family:var(--font-body);
-  line-height:1.6;
-}
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--font-body);line-height:1.6;}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
 a{color:var(--signal);}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
 
-/* ---------- Hero ---------- */
 .hero{background:var(--panel-2);border-bottom:1px solid var(--line);padding:40px 0 28px;}
-.eyebrow{
-  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--signal);font-weight:600;
-}
-.hero h1{
-  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
-  font-size:clamp(2.4rem,5.4vw,4.2rem);line-height:0.92;letter-spacing:0.005em;
-  margin:8px 0 6px;text-wrap:balance;color:var(--ink);
-}
-.hero .sub{max-width:62ch;color:var(--ink-dim);font-size:1.05rem;margin:0 0 24px;}
-.stat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:28px;}
-.stat{background:var(--panel);padding:14px 16px;}
-.stat .n{font-family:var(--font-display);font-weight:800;font-size:1.7rem;color:var(--ink);}
-.stat .l{font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);}
-@media (max-width:860px){ .stat-strip{grid-template-columns:repeat(2,1fr);} }
+.eyebrow{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--signal);font-weight:600;}
+.hero h1{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.8rem);line-height:0.92;margin:8px 0 6px;text-wrap:balance;color:var(--ink);}
+.hero .sub{max-width:66ch;color:var(--ink-dim);font-size:1.02rem;margin:0 0 26px;}
 
-.diagram{width:100%;height:auto;display:block;}
-.diagram text{font-family:var(--font-mono);}
-.diagram .wt{font-family:var(--font-display);font-weight:800;}
+/* ---------- Pathway / exam switcher ---------- */
+.pathway{margin-bottom:28px;}
+.pathway-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:12px;}
+.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media (max-width:860px){ .tracks{grid-template-columns:1fr;} }
+.track-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;}
+.track-name{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:1.1rem;color:var(--ink);margin-bottom:3px;}
+.track-desc{font-size:0.82rem;color:var(--ink-dim);margin-bottom:12px;min-height:34px;}
+.levels{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.level-chip{
+  font-family:var(--font-mono);font-size:0.74rem;text-align:left;letter-spacing:0.02em;
+  background:var(--panel-2);border:1px solid var(--line);color:var(--ink);border-radius:8px;
+  padding:8px 11px;cursor:pointer;line-height:1.3;position:relative;
+}
+.level-chip .lv{display:block;font-weight:700;}
+.level-chip .px{display:block;color:var(--ink-dim);font-size:0.68rem;margin-top:2px;}
+.level-chip.active{background:var(--signal);border-color:var(--signal);color:var(--signal-ink);}
+.level-chip.active .px{color:var(--signal-ink);opacity:0.85;}
+.level-chip.done::after{content:"✓";position:absolute;top:-6px;right:-6px;background:var(--signal);color:var(--signal-ink);width:16px;height:16px;border-radius:50%;font-size:0.62rem;display:flex;align-items:center;justify-content:center;}
+.level-arrow{color:var(--ink-dim);font-family:var(--font-mono);font-size:0.9rem;}
+
+/* ---------- Exam stat strip ---------- */
+.stat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-bottom:20px;}
+.stat{background:var(--panel);padding:14px 16px;}
+.stat .n{font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:var(--ink);}
+.stat .l{font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);}
+@media (max-width:860px){ .stat-strip{grid-template-columns:repeat(2,1fr);} }
+.exam-note{font-size:0.86rem;color:var(--ink-dim);margin:-8px 0 20px;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;}
+.exam-note b{color:var(--ink);}
+
+/* ---------- Weight bars ---------- */
+.weight-bars{display:flex;flex-direction:column;gap:9px;margin-bottom:24px;}
+.wb-eyebrow{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;}
+.wb-row{display:grid;grid-template-columns:200px 1fr 52px;gap:12px;align-items:center;}
+@media (max-width:640px){ .wb-row{grid-template-columns:120px 1fr 40px;} }
+.wb-name{font-size:0.84rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wb-track{height:16px;background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+.wb-fill{height:100%;background:var(--signal);}
+.wb-pct{font-family:var(--font-mono);font-size:0.8rem;text-align:right;color:var(--ink-dim);font-variant-numeric:tabular-nums;}
+
+/* ---------- Mock exam CTA ---------- */
+.exam-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--signal);border-radius:var(--radius);padding:16px 20px;margin-bottom:6px;}
+.exam-cta .info{flex:1;min-width:200px;}
+.exam-cta .info .t{font-family:var(--font-display);font-weight:800;font-size:1.1rem;text-transform:uppercase;color:var(--ink);}
+.exam-cta .info .d{font-family:var(--font-mono);font-size:0.76rem;color:var(--ink-dim);margin-top:2px;}
+.exam-cta .best{font-family:var(--font-mono);font-size:0.76rem;color:var(--ink-dim);}
+.exam-cta .best b{color:var(--signal);}
+.start-btn{font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.03em;text-transform:uppercase;background:var(--signal);color:var(--signal-ink);border:none;border-radius:8px;padding:12px 20px;cursor:pointer;font-weight:600;flex:none;}
+.start-btn:hover{filter:brightness(1.08);}
 
 /* ---------- Layout ---------- */
 .layout{display:grid;grid-template-columns:250px 1fr;gap:36px;align-items:start;padding:32px 0 80px;}
 @media (max-width:860px){ .layout{grid-template-columns:1fr;} }
-
+.layout.hidden{display:none;}
 .nav{position:sticky;top:20px;display:flex;flex-direction:column;gap:2px;}
-@media (max-width:860px){
-  .nav{position:static;flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--line);}
-}
+@media (max-width:860px){ .nav{position:static;flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--line);} }
 .nav-progress{font-family:var(--font-mono);font-size:0.74rem;color:var(--ink-dim);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line);}
 .nav-progress b{color:var(--ink);}
 .nav-bar{height:4px;background:var(--line);border-radius:2px;margin-top:8px;overflow:hidden;}
 .nav-bar i{display:block;height:100%;background:var(--signal);width:0%;transition:width .3s ease;}
-.nav a{
-  display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;
-  color:var(--ink-dim);font-size:0.88rem;white-space:nowrap;border:1px solid transparent;
-}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;color:var(--ink-dim);font-size:0.86rem;white-space:nowrap;border:1px solid transparent;}
 .nav a:hover{background:var(--panel);color:var(--ink);}
 .nav a .dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:0.55rem;color:transparent;}
 .nav a.done .dot{background:var(--signal);border-color:var(--signal);color:var(--signal-ink);}
 .nav a.done .dot::after{content:"✓";}
-.nav a .wt{margin-left:auto;font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-dim);}
+.nav a .wt{margin-left:auto;font-family:var(--font-mono);font-size:0.7rem;color:var(--ink-dim);}
 
 main{display:flex;flex-direction:column;gap:28px;min-width:0;}
-
-.domain{
-  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-  padding:26px 28px 28px;scroll-margin-top:20px;
-}
+.domain{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px 28px;scroll-margin-top:20px;}
 .domain-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;}
-.domain-head h2{
-  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
-  font-size:clamp(1.3rem,2.6vw,1.8rem);margin:2px 0 0;color:var(--ink);text-wrap:balance;
-}
+.domain-head h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.25rem,2.4vw,1.7rem);margin:2px 0 0;color:var(--ink);text-wrap:balance;}
 .domain-tag{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--signal);}
-.weight-pill{
-  font-family:var(--font-mono);font-size:0.78rem;color:var(--ink);background:var(--panel-2);
-  border:1px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap;flex:none;
-}
-.mark-btn{
-  font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.03em;text-transform:uppercase;
-  background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);border-radius:8px;
-  padding:8px 12px;cursor:pointer;flex:none;
-}
+.weight-pill{font-family:var(--font-mono);font-size:0.78rem;color:var(--ink);background:var(--panel-2);border:1px solid var(--line);border-radius:20px;padding:4px 12px;white-space:nowrap;flex:none;}
+.mark-btn{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.03em;text-transform:uppercase;background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);border-radius:8px;padding:8px 12px;cursor:pointer;flex:none;}
 .mark-btn.on{background:var(--signal);border-color:var(--signal);color:var(--signal-ink);}
-.mark-btn:focus-visible, a:focus-visible, .qbtn:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
-
+.mark-btn:focus-visible, a:focus-visible, .qbtn:focus-visible, .level-chip:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
 .domain h3{font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-dim);margin:22px 0 10px;}
 .domain h3:first-of-type{margin-top:4px;}
 .obj-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;}
 .obj-list li{display:flex;gap:9px;font-size:0.94rem;color:var(--ink-dim);}
 .obj-list li::before{content:"›";color:var(--signal);font-weight:700;flex:none;}
-
 .notes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
 .notes li{padding-left:16px;border-left:2px solid var(--line);font-size:0.98rem;}
 .notes li b{color:var(--ink);}
-
-.callout{
-  background:var(--flag-bg);border:1px solid var(--flag);border-radius:8px;padding:14px 16px;margin-top:18px;
-  font-size:0.94rem;color:var(--ink);
-}
+.callout{background:var(--flag-bg);border:1px solid var(--flag);border-radius:8px;padding:14px 16px;margin-top:18px;font-size:0.94rem;color:var(--ink);}
 .callout .lbl{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--flag);display:block;margin-bottom:6px;font-weight:700;}
-
 .q{border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-top:14px;background:var(--panel-2);}
 .q .stem{font-size:0.96rem;margin-bottom:10px;color:var(--ink);}
 .q .opt{display:flex;gap:8px;font-size:0.9rem;color:var(--ink-dim);padding:3px 0;}
 .q .opt b{font-family:var(--font-mono);color:var(--ink);flex:none;}
-.qbtn{
-  margin-top:10px;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.03em;text-transform:uppercase;
-  background:var(--panel);border:1px solid var(--signal);color:var(--signal);border-radius:6px;padding:7px 12px;cursor:pointer;
-}
+.qbtn{margin-top:10px;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.03em;text-transform:uppercase;background:var(--panel);border:1px solid var(--signal);color:var(--signal);border-radius:6px;padding:7px 12px;cursor:pointer;}
 .answer{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:0.9rem;color:var(--ink-dim);}
 .answer.show{display:block;}
 .answer b{color:var(--signal);}
 
-.foot{border-top:1px solid var(--line);padding:28px 0 60px;color:var(--ink-dim);font-size:0.86rem;}
-.foot p{max-width:70ch;}
-
-/* ---------- Mock exam CTA ---------- */
-.exam-cta{
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  background:var(--panel);border:1px solid var(--signal);border-radius:var(--radius);
-  padding:16px 20px;margin-bottom:28px;
-}
-.exam-cta .info{flex:1;min-width:200px;}
-.exam-cta .info .t{font-family:var(--font-display);font-weight:800;font-size:1.15rem;text-transform:uppercase;color:var(--ink);}
-.exam-cta .info .d{font-family:var(--font-mono);font-size:0.78rem;color:var(--ink-dim);margin-top:2px;}
-.exam-cta .best{font-family:var(--font-mono);font-size:0.78rem;color:var(--ink-dim);}
-.exam-cta .best b{color:var(--signal);}
-.start-btn{
-  font-family:var(--font-mono);font-size:0.82rem;letter-spacing:0.03em;text-transform:uppercase;
-  background:var(--signal);color:var(--signal-ink);border:none;border-radius:8px;
-  padding:12px 20px;cursor:pointer;font-weight:600;flex:none;
-}
-.start-btn:hover{filter:brightness(1.08);}
-
-/* ---------- Exam view ---------- */
 .exam-view{display:none;}
 .exam-view.active{display:block;}
-.layout.hidden{display:none;}
-.exam-bar{
-  position:sticky;top:0;z-index:5;background:var(--canvas);border-bottom:1px solid var(--line);
-  padding:16px 0;margin-bottom:24px;
-}
+.exam-bar{position:sticky;top:0;z-index:5;background:var(--canvas);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:24px;}
 .exam-bar .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
 .exam-bar .timer{font-family:var(--font-display);font-weight:800;font-size:1.6rem;color:var(--ink);font-variant-numeric:tabular-nums;}
 .exam-bar .timer.low{color:var(--danger);}
 .exam-bar .answered{font-family:var(--font-mono);font-size:0.78rem;color:var(--ink-dim);}
 .exam-bar .spacer{flex:1;}
-.exam-bar button{
-  font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.03em;text-transform:uppercase;
-  border-radius:8px;padding:9px 16px;cursor:pointer;
-}
+.exam-bar button{font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.03em;text-transform:uppercase;border-radius:8px;padding:9px 16px;cursor:pointer;}
 .exam-bar .exit-btn{background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);}
 .exam-bar .submit-btn{background:var(--signal);border:1px solid var(--signal);color:var(--signal-ink);font-weight:600;}
-
-.results{
-  background:var(--panel);border:1px solid var(--signal);border-radius:var(--radius);
-  padding:24px 26px;margin-bottom:28px;
-}
+.results{background:var(--panel);border:1px solid var(--signal);border-radius:var(--radius);padding:24px 26px;margin-bottom:28px;}
 .results .score-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
 .results .score{font-family:var(--font-display);font-weight:800;font-size:2.6rem;color:var(--ink);}
 .results .verdict{font-family:var(--font-mono);text-transform:uppercase;font-size:0.85rem;letter-spacing:0.05em;padding:5px 12px;border-radius:20px;}
@@ -228,7 +175,6 @@ main{display:flex;flex-direction:column;gap:28px;min-width:0;}
 .results .bar-cell{width:120px;}
 .results .mini-bar{height:6px;background:var(--panel-2);border-radius:3px;overflow:hidden;}
 .results .mini-bar i{display:block;height:100%;background:var(--signal);}
-
 .eq{border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-bottom:14px;background:var(--panel);}
 .eq .eq-tag{font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:6px;}
 .eq .stem{font-size:0.96rem;margin-bottom:10px;color:var(--ink);}
@@ -241,79 +187,35 @@ main{display:flex;flex-direction:column;gap:28px;min-width:0;}
 .eq.graded label.wrong-opt{opacity:0.55;}
 .eq .rationale{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:0.88rem;color:var(--ink-dim);}
 .eq.graded .rationale{display:block;}
+
+.foot{border-top:1px solid var(--line);padding:28px 0 60px;color:var(--ink-dim);font-size:0.86rem;}
+.foot p{max-width:70ch;}
 </style>
 </head>
 <body>
-
 <header class="hero">
   <div class="wrap">
     <span class="eyebrow">Independent study companion · Not an official Anthropic product</span>
-    <h1>Field Notes for the Architect Exam</h1>
-    <p class="sub">Condensed, original prep notes mapped to the official Claude Certified Architect – Professional (CCAR-P) blueprint — organized by the seven domains the exam actually scores, heaviest weight first.</p>
+    <h1>Claude Certification Field Notes</h1>
+    <p class="sub">Original condensed prep notes and self-test mock exams for all four Claude Certification Program exams — mapped to each exam's official blueprint, organized by the track and level you're actually pursuing.</p>
 
-    <div class="stat-strip">
-      <div class="stat"><div class="n">63</div><div class="l">Items</div></div>
-      <div class="stat"><div class="n">120</div><div class="l">Minutes</div></div>
-      <div class="stat"><div class="n">720</div><div class="l">Pass score / 1000</div></div>
-      <div class="stat"><div class="n">$175</div><div class="l">Exam fee</div></div>
-      <div class="stat"><div class="n">12</div><div class="l">Month validity</div></div>
+    <div class="pathway">
+      <div class="pathway-label">Certification pathway — pick a level to load its notes</div>
+      <div class="tracks" id="tracks"></div>
     </div>
 
-    <svg class="diagram" viewBox="0 0 960 230" role="img" aria-label="Seven exam domains by weight, feeding into the production system">
-      <g style="fill:var(--ink-dim);">
-        <text x="30" y="16" class="lbl" style="font-size:11px;letter-spacing:0.08em;">EXAM BLUEPRINT — SCORED ITEM DISTRIBUTION BY DOMAIN</text>
-      </g>
-      <!-- bars: x, width 70, baseline y=200 -->
-      <g style="font-size:11px;">
-        <!-- D1 17% h=102 -->
-        <rect x="30" y="98" width="70" height="102" style="fill:var(--panel-2);stroke:var(--signal);stroke-width:3;"/>
-        <text x="65" y="90" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">17%</text>
-        <text x="65" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D1</text>
-        <!-- D2 13% h=78 -->
-        <rect x="124" y="122" width="70" height="78" style="fill:var(--panel-2);stroke:var(--signal);stroke-width:3;"/>
-        <text x="159" y="114" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">13%</text>
-        <text x="159" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D2</text>
-        <!-- D3 19% h=114 (highest) -->
-        <rect x="218" y="86" width="70" height="114" style="fill:var(--signal);stroke:var(--signal);stroke-width:3;"/>
-        <text x="253" y="78" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">19%</text>
-        <text x="253" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D3</text>
-        <!-- D4 16% h=96 -->
-        <rect x="312" y="104" width="70" height="96" style="fill:var(--panel-2);stroke:var(--signal);stroke-width:3;"/>
-        <text x="347" y="96" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">16%</text>
-        <text x="347" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D4</text>
-        <!-- D5 14% h=84 -->
-        <rect x="406" y="116" width="70" height="84" style="fill:var(--panel-2);stroke:var(--signal);stroke-width:3;"/>
-        <text x="441" y="108" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">14%</text>
-        <text x="441" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D5</text>
-        <!-- D6 14% h=84 -->
-        <rect x="500" y="116" width="70" height="84" style="fill:var(--panel-2);stroke:var(--signal);stroke-width:3;"/>
-        <text x="535" y="108" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">14%</text>
-        <text x="535" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D6</text>
-        <!-- D7 7% h=42 -->
-        <rect x="594" y="158" width="70" height="42" style="fill:var(--panel-2);stroke:var(--signal);stroke-width:3;"/>
-        <text x="629" y="150" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">7%</text>
-        <text x="629" y="216" text-anchor="middle" style="fill:var(--ink-dim);">D7</text>
-      </g>
-      <!-- connectors to production node -->
-      <g style="stroke:var(--line);stroke-width:1.5;fill:none;">
-        <path d="M100,150 H730 V115 H758"/>
-        <path d="M194,160 H742 V115 H758"/>
-        <path d="M288,140 H750 V115 H758"/>
-        <path d="M382,150 H754 V115 H758"/>
-        <path d="M476,155 H758 V115"/>
-        <path d="M570,155 H762 V115 H758"/>
-        <path d="M664,175 H770 V115 H758"/>
-      </g>
-      <rect x="758" y="70" width="172" height="90" rx="6" style="fill:var(--panel);stroke:var(--signal);stroke-width:2;"/>
-      <text x="844" y="108" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">PRODUCTION</text>
-      <text x="844" y="128" text-anchor="middle" class="wt" style="fill:var(--ink);font-size:15px;">SYSTEM</text>
-      <text x="844" y="146" text-anchor="middle" style="fill:var(--ink-dim);font-size:10px;letter-spacing:0.06em;">DESIGN · INTEGRATE · GOVERN</text>
-    </svg>
+    <div class="stat-strip" id="stat-strip"></div>
+    <div class="exam-note" id="exam-note" style="display:none;"></div>
+
+    <div class="weight-bars">
+      <div class="wb-eyebrow" id="wb-eyebrow">EXAM BLUEPRINT — SCORED ITEM DISTRIBUTION BY DOMAIN</div>
+      <div id="wb-rows"></div>
+    </div>
 
     <div class="exam-cta">
       <div class="info">
         <div class="t">Mock exam mode</div>
-        <div class="d" id="exam-cta-desc">28 questions · 53 min · scaled to the real 63-item / 120-min ratio</div>
+        <div class="d" id="exam-cta-desc"></div>
       </div>
       <span class="best" id="best-score"></span>
       <button class="start-btn" id="start-exam-btn">Start mock exam</button>
@@ -324,16 +226,10 @@ main{display:flex;flex-direction:column;gap:28px;min-width:0;}
 <div class="wrap layout" id="dashboard">
   <nav class="nav" id="nav">
     <div class="nav-progress">
-      <span id="prog-text"><b>0</b> / 7 domains reviewed</span>
+      <span id="prog-text"></span>
       <div class="nav-bar"><i id="prog-bar"></i></div>
     </div>
-    <a href="#d1" data-id="d1"><span class="dot"></span> Solution Design <span class="wt">17%</span></a>
-    <a href="#d2" data-id="d2"><span class="dot"></span> Models &amp; Prompting <span class="wt">13%</span></a>
-    <a href="#d3" data-id="d3"><span class="dot"></span> Integration <span class="wt">19%</span></a>
-    <a href="#d4" data-id="d4"><span class="dot"></span> Evaluation &amp; Testing <span class="wt">16%</span></a>
-    <a href="#d5" data-id="d5"><span class="dot"></span> Governance &amp; Risk <span class="wt">14%</span></a>
-    <a href="#d6" data-id="d6"><span class="dot"></span> Stakeholder &amp; Lifecycle <span class="wt">14%</span></a>
-    <a href="#d7" data-id="d7"><span class="dot"></span> Dev Productivity <span class="wt">7%</span></a>
+    <div id="nav-links"></div>
   </nav>
 
   <main id="domains"></main>
@@ -342,8 +238,8 @@ main{display:flex;flex-direction:column;gap:28px;min-width:0;}
 <div class="exam-view wrap" id="exam-view">
   <div class="exam-bar">
     <div class="row">
-      <div class="timer" id="exam-timer">53:00</div>
-      <div class="answered" id="exam-answered">0 / 28 answered</div>
+      <div class="timer" id="exam-timer">00:00</div>
+      <div class="answered" id="exam-answered">0 / 0 answered</div>
       <div class="spacer"></div>
       <button class="exit-btn" id="exam-exit-btn">Exit</button>
       <button class="submit-btn" id="exam-submit-btn">Submit exam</button>
@@ -354,305 +250,782 @@ main{display:flex;flex-direction:column;gap:28px;min-width:0;}
 </div>
 
 <div class="wrap foot">
-  <p><b>How to use this:</b> tick a domain off once you can explain its notes and high-yield callout without looking. The self-test questions are original, written to match the exam's scenario-judgment style — they are not real exam items. This page supplements the official prep course and exam guide; it does not replace hands-on Claude experience, which the exam blueprint assumes.</p>
+  <p><b>How to use this:</b> pick your track and level above, tick off domains as you can explain their notes and high-yield callouts without looking, then run the mock exam. Self-test questions are original, written to match each exam's scenario-judgment style — they are not real exam items. This page supplements the official prep courses and exam guides; it does not replace hands-on experience, which every blueprint assumes to some degree.</p>
 </div>
-
 <script>
-const DOMAINS = [
+const EXAMS = [
 {
-  id:"d1", n:"01", weight:"17%", title:"Solution Design &amp; Architecture",
-  objectives:[
-    "Turn an ambiguous business ask into a scoped Claude solution",
-    "Design the end-to-end loop: input → processing → output → feedback",
-    "Choose between workflow, agentic, and augmented-LLM patterns",
-    "Design multi-agent orchestration where it's actually warranted",
-    "Decompose complex problems before picking an architecture",
-    "Tie every design choice to a business value pillar"
-  ],
-  notes:[
-    "<b>Augmented LLM</b> — one call plus retrieval/tools/memory. Default starting point for bounded, mostly single-turn tasks.",
-    "<b>Workflow</b> — fixed code paths chaining LLM calls (chaining, routing, parallelization, orchestrator–worker, evaluator–optimizer). Use when the steps and their order are knowable in advance.",
-    "<b>Agentic</b> — Claude plans and sequences its own tool calls in a loop. Reach for this only when steps genuinely can't be predetermined; it costs more in latency, tokens, and control.",
-    "<b>Escalation order matters</b>: start at the simplest pattern that solves the task, and only add complexity (workflow → agent, single agent → multi-agent) when the simpler version demonstrably fails.",
-    "<b>Multi-agent orchestration</b> earns its cost on parallelizable, independent subtasks — coordination overhead and context-sharing between agents is real, so it isn't free scaling.",
-    "<b>Decomposition</b> comes before pattern selection: split the ambiguous problem into bounded subtasks with clear inputs/outputs, and decide what stays deterministic code vs. what Claude should own.",
-    "<b>Business value pillars</b> — efficiency, transformation, productivity, cost, performance SLAs. Exam scenarios often hinge on picking the *right* pillar to justify a decision, not just a plausible one."
-  ],
-  highYield:"When a scenario describes a task that could be solved with a fixed sequence of steps, the correct answer is almost never the fanciest architecture — it's the simplest one that still meets the requirement.",
-  qs:[
-    {stem:"A team wants Claude to run an onboarding process where the number and order of steps varies significantly case to case. Which pattern best fits?",
-     opts:["A fixed prompt-chaining workflow with hardcoded steps","A single augmented-LLM call with a very large system prompt","An agentic loop where Claude plans and sequences its own tool calls","A rules engine with no LLM involvement"],
-     answer:2, rationale:"Variable, unpredictable step count and order is the defining signal for an agentic pattern over a fixed workflow — the workflow (A) assumes known steps, and a single call (B) can't hold multi-step state."},
-    {stem:"A proposed Claude system would fully automate a report an analyst currently builds by hand in 2 hours/week. Which value pillar anchors this pitch to stakeholders?",
-     opts:["Transformation — a net-new capability","Efficiency — time and cost saved on an existing task","Performance SLA — latency and uptime targets","Productivity — augmenting judgment-heavy work"],
-     answer:1, rationale:"Automating an existing repetitive task is squarely an efficiency gain, not a new capability (transformation) or augmentation of human judgment (productivity)."},
-    {stem:"A fixed three-step workflow (extract → summarize → format) needs a variable number of extraction passes depending on unpredictable document length. What's the most appropriate change?",
-     opts:["Keep the fixed workflow and just increase the context window","Replace the fixed chain with an agentic loop that decides how many extraction passes to run","Add a fourth hardcoded step for 'long documents'","Switch to a bigger model so one pass is always enough"],
-     answer:1, rationale:"A data-dependent, unpredictable step count is the same agentic signal as before — this time framed as a workflow outgrowing its fixed shape as requirements evolve."},
-    {stem:"While decomposing a claims-processing system, an architect finds a subtask that is deterministic, rule-based, and has zero tolerance for ambiguity: a payout calculation from a fixed formula. What should own this subtask?",
-     opts:["Claude, using a very detailed system prompt","Claude, using chain-of-thought to show its work","Deterministic code outside the model, with Claude orchestrating around it","A human reviewer for every calculation"],
-     answer:2, rationale:"Zero-ambiguity-tolerance, formula-based logic belongs in deterministic code, not the model — this is the core 'what should Claude own' judgment decomposition is meant to produce."}
+  id:"assoc-f", code:"CCAO-F", track:"Associate", level:"Foundations",
+  name:"Associate — Foundations", fee:"$99", items:60, minutes:120, passScore:720, validity:12,
+  domains:[
+    { id:"d1", n:"01", weight:"14%", weightNum:14, title:"Prompting and Task Execution",
+      objectives:["Create effective prompts for business and technical tasks","Decompose complex requests into structured steps","Iterate prompts to improve output quality","Adapt prompting strategy to the task type (analysis, research, drafting, brainstorming)"],
+      notes:[
+        "Treat a first draft prompt as a draft, not a final answer — plan to iterate based on what comes back.",
+        "Break a big ask into smaller, ordered sub-asks Claude can act on one at a time; vague mega-prompts tend to produce generic output.",
+        "Match approach to task type: analysis/research benefits from asking for structured reasoning; drafting benefits from voice/format examples; brainstorming benefits from volume-then-narrow.",
+        "Give the <b>why</b> behind a task (audience, purpose, constraints), not just the what — this alone noticeably improves usability.",
+        "Iterate with specifics: 'too formal' or 'missing the Q3 numbers' targets the next pass far better than starting over."
+      ],
+      highYield:"When a vague ask produces a vague result, the fix is decomposition or added specifics — not switching tools or repeating the same prompt.",
+      qs:[
+        {stem:"An associate asks Claude to 'write a project update' and gets a generic, unusable draft. Most effective next step?",
+         opts:["Ask Claude to try again with the exact same prompt","Provide specifics: audience, key milestones, tone, and length","Switch to a different AI tool","Write the update manually instead"],
+         answer:1, rationale:"The gap is missing specificity, not a tool or repetition problem — audience/content/tone constraints directly address why the draft was generic."},
+        {stem:"A marketing associate asks Claude to research a competitor, analyze pricing, and draft a comparison one-pager all in one request. All three come back shallow. Best fix?",
+         opts:["Ask for all three in an even longer single prompt","Split into sequential steps — research, then analysis, then drafting — reviewing each before the next","Only ask for the one-pager and skip the rest","Repeat the same request three times"],
+         answer:1, rationale:"Decomposing into ordered steps, each checked before the next, produces more depth than cramming three distinct task types into one shot."}
+      ]
+    },
+    { id:"d2", n:"02", weight:"21%", weightNum:21, title:"Output Evaluation and Validation",
+      objectives:["Evaluate outputs for accuracy and completeness","Spot hallucinations, inconsistencies, and bias","Apply fact-checking and validation techniques","Know when human review or extra verification is required","Edit and adapt outputs for the intended audience","Choose the right output format (artifact, inline, structured data)"],
+      notes:[
+        "Confident phrasing is not evidence of accuracy — a fabricated citation can read exactly as polished as a correct one. Specific-looking details (exact section numbers, precise stats) are a common hallucination pattern worth double-checking.",
+        "Validate most rigorously when the audience is compliance/legal/finance or the decision is consequential — that's where an unverified error costs the most.",
+        "'Edit for audience' means more than tone: an executive summary needs different information density than a technical brief, even from the same source facts.",
+        "Self-reported model confidence is not a reliable accuracy signal — checking the source is not optional just because Claude 'sounds sure.'",
+        "Choosing output format (artifact vs. inline vs. structured data) should match how the result will actually be used downstream."
+      ],
+      highYield:"Whenever Claude produces a specific-sounding fact (citation, statistic, quote) headed for an important audience, the correct action is independent verification — never 'trust because it's confident' and never 'ask the model to self-rate.'",
+      qs:[
+        {stem:"Claude drafts a client-facing proposal citing '73% of customers in our March survey.' The associate doesn't recall a March survey. Best action?",
+         opts:["Keep the stat since it sounds plausible","Verify the figure against actual survey data before sending","Change the number to a rounder figure","Remove the sentence but send the rest unchecked"],
+         answer:1, rationale:"A specific-looking, unverifiable statistic is a classic hallucination pattern — verify against the source before it reaches a client."},
+        {stem:"A draft needs to go to two very different audiences: engineers and executives. Correct approach?",
+         opts:["Send the same draft to both","Produce two adapted versions tailored to each audience's needed depth and framing","Ask executives to read the engineering version","Shorten the draft randomly for whichever audience asks first"],
+         answer:1, rationale:"Audience adaptation changes information density and framing, not just length — one draft rarely serves both well."}
+      ]
+    },
+    { id:"d3", n:"03", weight:"12%", weightNum:12, title:"Product and Model Selection",
+      objectives:["Select the right product feature for the task (Projects, research mode, chat, artifacts)","Differentiate Claude model tiers (Haiku/Sonnet/Opus)","Align model choice with cost, speed, and quality needs","Manage context limitations (when to restart, summarize, or persist)"],
+      notes:[
+        "Match model tier to task weight: fast/light models for high-volume simple tasks, the most capable tier for complex reasoning or high-stakes analysis.",
+        "Projects suit ongoing, knowledge-backed work (a recurring client, a standing body of documents); a one-off chat is fine for a single unrelated question.",
+        "Artifacts suit content meant to be iterated on as a distinct object (a document, code, a design) rather than read once inline.",
+        "When a conversation gets long and unfocused, a fresh, well-scoped restart often beats pushing through cluttered context."
+      ],
+      highYield:"'High volume + low complexity + cost/speed matter most' signals the fastest/cheapest model tier — reflexively picking the most capable model for everything is the trap answer.",
+      qs:[
+        {stem:"An associate needs to draft 200 similar short social captions today. Best fit?",
+         opts:["The most capable, slowest model for every caption","A faster, lower-cost model suited to short, high-volume tasks","A single Project with no drafting at all","Manually writing all 200"],
+         answer:1, rationale:"High-volume, low-complexity work is exactly what a faster/cheaper model tier is for."},
+        {stem:"A consultant works with the same client's documents daily over several months. What best supports this?",
+         opts:["Re-uploading documents in a fresh chat every day","A Claude Project configured with the client's standing knowledge and instructions","Emailing documents back and forth instead","Starting over from scratch each session with no configuration"],
+         answer:1, rationale:"Ongoing, knowledge-backed work is the core use case for a configured Project."}
+      ]
+    },
+    { id:"d4", n:"04", weight:"16%", weightNum:16, title:"Workflow Integration and Solution Design",
+      objectives:["Analyze requirements and use cases","Use Claude for research, planning, and process optimization","Support solution design, development, and iteration","Integrate Claude into existing workflows to augment or redesign them","Communicate Claude's value and limitations to stakeholders"],
+      notes:[
+        "Before automating a workflow, map the current process and find where Claude adds real leverage (repetitive drafting, synthesis, first-pass analysis) vs. where human judgment must stay.",
+        "'Augment' and 'redesign' are different moves: sometimes Claude slots into an existing step, other times the workflow itself should change shape.",
+        "When pitching a Claude-based workflow change, be explicit about limitations alongside the value — undersold limitations erode trust later."
+      ],
+      highYield:"'Bolt Claude onto the existing process or redesign it' questions reward evaluating what actually changes about the work, not defaulting to either option.",
+      qs:[
+        {stem:"A team spends hours manually summarizing weekly support tickets into a report. Which best describes applying Claude here?",
+         opts:["Redesign the whole support workflow immediately","Use Claude to draft the summary as an augmentation to the existing process, with human review","Skip human review entirely to save time","Avoid using Claude since the task is manual"],
+         answer:1, rationale:"A drafting/summarizing task is a natural augmentation point with a review step — no need to redesign the whole workflow."},
+        {stem:"When pitching a new Claude-assisted workflow to stakeholders, what should accompany the benefits?",
+         opts:["Nothing beyond the benefits — limitations undermine the pitch","Known limitations and where human review or escalation is still needed","A guarantee of zero errors","Technical implementation details only"],
+         answer:1, rationale:"Explicit, honest limitations build durable trust; omitting them creates problems once reality doesn't match an oversold pitch."}
+      ]
+    },
+    { id:"d5", n:"05", weight:"12%", weightNum:12, title:"Configuration and Knowledge Management",
+      objectives:["Configure Projects with instructions and knowledge sources","Manage uploaded knowledge and connectors (e.g., Drive, Gmail)","Write effective system-level instructions","Maintain and update configurations and knowledge sources over time"],
+      notes:[
+        "Project instructions should state role, scope, and format expectations up front — this is what keeps every conversation in that Project consistent.",
+        "Knowledge sources and connectors need to be kept current — stale uploaded knowledge produces confidently wrong answers based on outdated info.",
+        "Revisit and update instructions/knowledge as the underlying process changes, not just at initial setup."
+      ],
+      highYield:"A Project giving inconsistent or outdated answers is usually a configuration-maintenance problem (stale knowledge, vague instructions), not a model-quality problem.",
+      qs:[
+        {stem:"A Project's outputs recently started referencing a discontinued product. Most likely cause and fix?",
+         opts:["The model is malfunctioning; wait for it to self-correct","The Project's uploaded knowledge is stale and needs updating","Switch to a different Project entirely","Ignore it since it will resolve itself"],
+         answer:1, rationale:"Outdated uploaded knowledge is the far more common and directly fixable cause than a model malfunction."},
+        {stem:"A new teammate joins a shared Project and gets inconsistent answers versus the rest of the team. What should be checked first?",
+         opts:["Whether the Project's instructions and knowledge sources are clear and complete","Whether they are using a different device","Whether they typed their prompt in a different font","Nothing — this is expected and unfixable"],
+         answer:0, rationale:"Inconsistent results across teammates on the same Project points at incomplete or ambiguous configuration, not device quirks."}
+      ]
+    },
+    { id:"d6", n:"06", weight:"15%", weightNum:15, title:"Governance, Risk, and Responsible Use",
+      objectives:["Identify appropriate vs. inappropriate use cases","Apply data-sensitivity, regulatory, and privacy considerations","Follow organizational AI policy and governance standards","Understand the ethical implications of AI use"],
+      notes:[
+        "Regulated or sensitive personal data should be minimized or anonymized before it goes into a prompt or upload, regardless of whether the analysis is 'internal only.'",
+        "'Can Claude technically do this' and 'should this go through Claude without further review' are different questions — some use cases need escalation regardless of capability.",
+        "Org AI policy exists to operationalize responsible use consistently — individual judgment should defer to documented policy, not override it."
+      ],
+      highYield:"When an easy technical path would violate a stated data or policy constraint, the correct answer is always the compliant option (redact/anonymize/escalate) — never 'just this once' or 'tell the model not to retain it.'",
+      qs:[
+        {stem:"An HR associate wants Claude to analyze performance-review text with sensitive personal details, unredacted, because 'it's internal only.' Correct action?",
+         opts:["Proceed as-is since it's internal","Anonymize or minimize identifying personal details first, per policy","Ask Claude not to remember the details","Skip the analysis and do nothing"],
+         answer:1, rationale:"Internal-only framing doesn't override a data-minimization policy; redact/anonymize before proceeding."},
+        {stem:"An associate is unsure whether a new use case (auto-drafting customer-facing legal notices) needs review before implementation. Best action?",
+         opts:["Proceed since Claude is technically capable of the task","Escalate to check against organizational AI governance/policy first","Implement it quietly to save time","Ask a coworker informally instead of consulting policy"],
+         answer:1, rationale:"Technical capability doesn't settle whether a use case is appropriate without review — escalate to policy first."}
+      ]
+    },
+    { id:"d7", n:"07", weight:"10%", weightNum:10, title:"Troubleshooting and Optimization",
+      objectives:["Diagnose underperforming prompts or outputs","Adjust approach based on feedback and results","Optimize workflows for efficiency and effectiveness"],
+      notes:[
+        "When output quality is poor, diagnose before rewriting from scratch: missing context, ambiguous instructions, wrong format, or a task better suited to decomposition?",
+        "Treat each round of feedback as data — track recurring fixes and adjust the standing prompt so the same issue doesn't need re-explaining every time.",
+        "Efficiency optimization includes front-loading the context and format Claude needs the first time, cutting redundant back-and-forth."
+      ],
+      highYield:"Recurring, predictable feedback ('always too long,' 'always missing X') signals fixing the standing prompt/instructions — not correcting each output individually.",
+      qs:[
+        {stem:"Every week, an associate asks Claude to shorten its report drafts. Most efficient long-term fix?",
+         opts:["Keep manually shortening each week","Update the standing prompt/instructions to specify the desired length upfront","Stop using Claude for reports","Ask a coworker to shorten it instead"],
+         answer:1, rationale:"A recurring, predictable correction belongs in the standing instructions, not repeated manually."}
+      ]
+    }
   ]
 },
 {
-  id:"d2", n:"02", weight:"13%", title:"Claude Models, Prompting &amp; Context Engineering",
-  objectives:[
-    "Pick a model based on real capability/cost/latency trade-offs, not habit",
-    "Design system prompts, templates, and guardrails deliberately",
-    "Apply zero-shot, few-shot, and chain-of-thought where each earns its cost",
-    "Manage the context window and token budget on purpose",
-    "Reuse prompts through caching, modular blocks, and Skills"
-  ],
-  notes:[
-    "Match model size to task complexity — the biggest model is not the default answer; high-volume, low-complexity tasks usually want the fastest/cheapest model that clears the accuracy bar.",
-    "System prompts carry the stable role, policy, and output-format instructions; structure them with clear sections so instructions, context, examples, and format don't blur together.",
-    "<b>Zero-shot</b> for simple, well-specified tasks. <b>Few-shot</b> (2–5 examples) to anchor format or tone the model keeps missing. <b>Chain-of-thought</b> only for genuinely multi-step reasoning — it adds latency and tokens, so it's a cost, not a free upgrade.",
-    "Context window strategy: put static, reusable content (system prompt, policy docs, tool definitions) <b>first</b>, and dynamic per-request content last — this is also what makes the prefix cacheable.",
-    "<b>Prompt caching</b> reuses an unchanged prefix across calls to cut both latency and cost — it's the standard answer whenever a scenario has large static content plus small varying input.",
-    "<b>Skills</b> and modular prompts let you load specialized instructions on demand instead of stuffing every possible instruction into every call."
-  ],
-  highYield:"Pattern to recognize instantly: 'same large static content every request + short varying user input + cost/latency concern' → the answer is order-stable-content-first and enable prompt caching. This exact shape repeats across exam scenarios.",
-  qs:[
-    {stem:"A support-ticket classifier must choose exactly one of 5 fixed categories under a strict low-latency budget. Best combination?",
-     opts:["The most capable model with chain-of-thought enabled","A smaller/faster model with one few-shot example per category","The most capable model with zero-shot instructions only","A smaller/faster model with a very long explanatory system prompt and no examples"],
-     answer:1, rationale:"Fixed, low-complexity classification under a latency budget favors a fast model anchored by a few-shot example per class; chain-of-thought adds latency the task doesn't need."},
-    {stem:"An agent sends the same 15,000-token policy manual on every call, followed by a short varying question. Cost per request is the concern. First move?",
-     opts:["Summarize the manual down to 500 tokens","Move the manual after the user's question","Keep the manual first, unchanged, and enable prompt caching","Switch every request to the smallest available model"],
-     answer:2, rationale:"A stable prefix ahead of varying content is exactly what prompt caching is for — it cuts cost without discarding policy coverage, unlike summarizing or blind downsizing."},
-    {stem:"A creative-writing assistant needs a consistent character voice across a long multi-turn conversation, and history is approaching the model's context limit. Best approach?",
-     opts:["Let the conversation truncate from the oldest turns with no strategy","Periodically summarize earlier turns into a compact running summary and drop the raw turns","Switch to a bigger-context model and never manage the window","Restart the conversation from scratch every 10 turns"],
-     answer:1, rationale:"Deliberate summarization/compaction preserves key facts under a token budget; unmanaged truncation and full resets both lose continuity, and a bigger context window just delays the same problem."},
-    {stem:"A prompt template separates &lt;instructions&gt;, &lt;context&gt;, and &lt;examples&gt; with explicit tags. Why does this matter?",
-     opts:["It looks more professional to stakeholders","It reduces token count significantly","It gives the model unambiguous structure to distinguish instructions from content, reducing the risk content is misread as an instruction","It's required by the Claude API"],
-     answer:2, rationale:"Explicit structure disambiguates instructions from data for the model — the same underlying principle that defends against content being misread as commands."}
+  id:"dev-f", code:"CCDV-F", track:"Developer", level:"Foundations",
+  name:"Developer — Foundations", fee:"$125", items:53, minutes:120, passScore:720, validity:12,
+  domains:[
+    { id:"d1", n:"01", weight:"14.7%", weightNum:14.7, title:"Agents and Workflows",
+      objectives:["Choose between workflow and agent architectures with clear decision criteria","Build agents with the Claude Agent SDK, custom loops, or managed deployment","Apply agent design patterns (tool-use loops, sub-agents, memory) and abstraction frameworks"],
+      notes:[
+        "Workflow vs. agent: fixed, predictable steps → a code-defined workflow; steps that must be determined dynamically from intermediate results → an agent.",
+        "Manager/supervisor hierarchies let a top-level agent delegate to subagents for parallelizable or specialized work, instead of one agent doing everything serially.",
+        "The Agent SDK provides the harness (loop, tool orchestration); hooks let you inject deterministic actions (logging, validation) at defined points without relying on the model to remember.",
+        "Self-hosted vs. Anthropic-hosted deployment is a real tradeoff: infra control and customization vs. operational simplicity.",
+        "Agentic frameworks package reusable patterns (tool-use loops, memory, context-window management) — useful, but understand the underlying pattern, not just one framework's API."
+      ],
+      highYield:"'Should this be a workflow or an agent' hinges on whether the step sequence is knowable in advance — the domain's core recurring test.",
+      qs:[
+        {stem:"A team processes invoices where the extraction steps are always the same three operations in the same order. Best fit?",
+         opts:["A fully autonomous agent that decides its own steps","A fixed workflow with the three steps coded in order","A dozen independent agents each guessing the next step","No automation at all"],
+         answer:1, rationale:"Known, fixed, ordered steps are exactly what a code-defined workflow is for — an agent adds unneeded unpredictability and cost."},
+        {stem:"A support agent must sometimes look up an order, sometimes check a policy doc, sometimes both, depending on what's asked — the sequence isn't knowable in advance. Best fit?",
+         opts:["A fixed three-step workflow","An agent loop that selects tools dynamically based on the conversation","A single hardcoded prompt with no tools","Manual escalation for every request"],
+         answer:1, rationale:"Unpredictable, context-dependent step sequencing is the defining signal for an agentic loop over a fixed workflow."}
+      ]
+    },
+    { id:"d2", n:"02", weight:"33.1%", weightNum:33.1, title:"Applications and Integration",
+      objectives:["Translate business/infrastructure requirements into technical design","Apply systems life-cycle practices to Claude applications","Work with Claude API mechanics: messages, tools, streaming, caching, batch vs. realtime","Apply core software engineering practices (REST, JSON, async, version control, code review)","Design Claude applications across interfaces (Code, Desktop, claude.ai, API/SDKs)","Manage configuration: CLAUDE.md, settings.json, model/prompt versioning"],
+      notes:[
+        "Requirements-gathering means separating functional needs (what the app must do) from infrastructure needs (how it runs, scales, integrates) before writing code.",
+        "API mechanics to know cold: messages format, tool-calling round-trips, streaming for responsiveness, prompt caching for repeated prefixes, and realtime-vs-batch tradeoffs.",
+        "Claude behaves differently by interface (Claude Code vs. Desktop vs. claude.ai vs. raw API) — application design must account for interface-specific instruction interpretation.",
+        "Configuration management applies like any software system: pin model versions deliberately, version prompts, track plugin/dependency versions — don't let 'whatever's current' silently change production behavior.",
+        "Session hygiene (not letting conversations balloon indefinitely) is part of application design, not an afterthought."
+      ],
+      highYield:"The realtime-vs-batch tradeoff recurs constantly: latency-tolerant, high-volume, cost-sensitive work → batch; anything needing an immediate response or mid-request tool calls → realtime.",
+      qs:[
+        {stem:"An application must classify 50,000 support tickets by end of day tomorrow, cost-sensitive, with no live user waiting on results. Best API approach?",
+         opts:["Synchronous Messages API called in a tight loop","The Message Batches API","No API call — manual classification","A single oversized request containing all 50,000 tickets"],
+         answer:1, rationale:"Latency-tolerant, high-volume, cost-sensitive work is exactly what the batch API is for."},
+        {stem:"A production app starts behaving unexpectedly after a routine deploy; the team suspects an unpinned model version silently changed behavior. What practice would have prevented this?",
+         opts:["Explicit model version pinning in configuration","Deleting version control history","Avoiding all configuration files","Running the app without any monitoring"],
+         answer:0, rationale:"Deliberate version pinning is the direct configuration-management fix for silent behavior drift across releases."}
+      ]
+    },
+    { id:"d3", n:"03", weight:"3.1%", weightNum:3.1, title:"Claude Code",
+      objectives:["Operate Claude Code's core components (Rules, Skills, Commands, Agents, Agent Memory)","Use session management, slash commands, headless/streaming/auto-modes","Configure the CLAUDE.md hierarchy and settings.json"],
+      notes:[
+        "Core building blocks: Rules (standing conventions), Skills (on-demand task workflows), Commands (slash-command shortcuts), Agents/Agent Memory (persistent working context).",
+        "CLAUDE.md hierarchy scopes instructions broad-to-narrow; repository initialization and settings.json set the baseline environment for a project.",
+        "Headless/streaming/auto-modes support different operational contexts (CI pipelines, live sessions, unattended runs) — pick the mode matching how the session is actually driven."
+      ],
+      highYield:"Smallest-weight domain (3.1%) — expect a small number of direct 'what does this component do' questions rather than deep scenario chains.",
+      qs:[
+        {stem:"Which Claude Code component is for standing, always-applicable project conventions rather than one-off invocable workflows?",
+         opts:["Slash Commands","Rules / CLAUDE.md","Headless mode","Streaming mode"],
+         answer:1, rationale:"Rules/CLAUDE.md are always-loaded standing conventions; Commands are invoked on demand."},
+        {stem:"A team wants Claude Code to run unattended inside an automated script with no live terminal interaction. Which mode fits?",
+         opts:["Interactive mode","Headless mode","Streaming-only chat mode","Auto-mode with manual confirmation prompts"],
+         answer:1, rationale:"Headless mode is designed for non-interactive, unattended, automated invocation."}
+      ]
+    },
+    { id:"d4", n:"04", weight:"2.6%", weightNum:2.6, title:"Eval, Testing, and Debugging",
+      objectives:["Identify error types and select recovery strategies","Use trace analysis to find failure modes","Isolate whether a problem originates in the integration layer or model output"],
+      notes:[
+        "Debugging a Claude application means isolating where a failure originates: the integration layer (your code, API usage, data plumbing) vs. the model's output itself — don't assume it's always 'the model.'",
+        "Trace analysis (the actual sequence of requests/tool calls/responses) finds the specific failure mode rather than guessing from symptoms alone.",
+        "Recovery strategy should match error type: transient issues may warrant retry; structural/logic issues need a code or prompt fix, not a retry."
+      ],
+      highYield:"Smallest-weight domain (2.6%) — expect one or two direct 'where does this failure originate' questions.",
+      qs:[
+        {stem:"An application intermittently returns malformed output only under high load. Where should debugging start?",
+         opts:["Assume the model architecture is broken","Trace analysis to isolate whether the issue is the integration layer (timeouts, partial responses) or the model's output","Rewrite the entire application from scratch","Ignore it since it's intermittent"],
+         answer:1, rationale:"Load-correlated intermittent failures point to the integration layer first; trace analysis confirms where the failure actually originates."}
+      ]
+    },
+    { id:"d5", n:"05", weight:"16.8%", weightNum:16.8, title:"Model Selection and Optimization",
+      objectives:["Understand core LLM fundamentals (tokens, context windows, sampling)","Apply model options (fast mode, extended/adaptive thinking, effort levels)","Select models based on capability/latency/cost tradeoffs","Manage token budgets and cost via caching techniques"],
+      notes:[
+        "Core mechanics — tokens, context windows, sampling/non-determinism, next-token generation — underlie why outputs vary and why context budgets matter.",
+        "Extended/adaptive thinking and effort levels trade latency/cost for deeper reasoning — reserve them for tasks that actually need multi-step reasoning.",
+        "Model tier selection is a quality-latency-cost triangle; also watch for breaking behavior changes across releases — validate before rolling out broadly.",
+        "Token/cost management: track usage, model cost realistically, and use prompt caching for repeated large prefixes to cut both cost and latency."
+      ],
+      highYield:"'Big static prefix + small varying input + cost matters' → prompt caching is the answer. This exact pattern recurs across every Claude certification.",
+      qs:[
+        {stem:"An application sends an unchanging 6,000-token tool-definition block on every request, with brief varying user turns. Direct fix for cost and latency?",
+         opts:["Remove the tool definitions entirely","Enable prompt caching on the stable prefix","Switch to the least capable model regardless of task","Increase max_tokens"],
+         answer:1, rationale:"A stable, repeated prefix ahead of small varying content is the standard prompt-caching pattern."},
+        {stem:"A task requires multi-step arithmetic and logical reasoning before producing an answer. Most appropriate model configuration?",
+         opts:["Disable reasoning entirely for speed","Enable extended/adaptive thinking appropriate to the reasoning depth needed","Always use the fastest, lightest model regardless of task","Increase temperature to improve reasoning"],
+         answer:1, rationale:"Genuine multi-step reasoning is exactly what extended/adaptive thinking is designed to support."}
+      ]
+    },
+    { id:"d6", n:"06", weight:"11.0%", weightNum:11, title:"Prompt and Context Engineering",
+      objectives:["Manage context windows and prevent drift/bloat","Apply prompt engineering principles (clarity, few-shot, system/user placement, sanitization)","Handle output defensively: structured validation and skepticism toward confident output"],
+      notes:[
+        "Context drift/bloat prevention: prune verbose tool outputs, compact history periodically, isolate noisy sub-tasks in subagents so the main context stays focused.",
+        "Prompt fundamentals: instruction clarity beats cleverness; few-shot examples anchor format; stable role/policy goes in system, variable content in user turns; sanitize untrusted input before it reaches the prompt.",
+        "Output handling: validate structured output defensively — never trust it blindly, and apply skepticism to confident-sounding responses."
+      ],
+      highYield:"A long-running agent session degrading in quality points to pruning/compaction/isolation — not simply 'use a bigger context window.'",
+      qs:[
+        {stem:"A long-running agent session's tool outputs have accumulated to the point where the model gives inconsistent answers. Most direct fix?",
+         opts:["Switch to a model with an even larger context window and change nothing else","Prune irrelevant tool-output fields and compact/summarize older history","Ignore it — this is expected and unfixable","Restart with zero context and no summary"],
+         answer:1, rationale:"Active pruning and compaction address accumulated context bloat directly; a bigger window just delays the same problem."},
+        {stem:"Detailed instructions alone produce inconsistent classification labels across similar tickets. Best fix?",
+         opts:["Add few-shot examples showing correct classification for each category","Increase max_tokens","Remove all instructions","Switch to the batch API"],
+         answer:0, rationale:"Few-shot examples are the standard fix for inconsistent formatting/classification when prose instructions alone aren't landing."}
+      ]
+    },
+    { id:"d7", n:"07", weight:"8.1%", weightNum:8.1, title:"Security and Safety",
+      objectives:["Apply AI application security practices (injection, jailbreak, PII, data leakage)","Layer guardrails and secure-by-design deployment practices","Use hooks for deterministic safety controls","Manage secrets, credentials, and access"],
+      notes:[
+        "Treat untrusted input (web content, uploaded documents, tool results) as data, never as instructions — the standing defense against prompt injection.",
+        "Layer guardrails (content policy, hooks for deterministic blocking) rather than relying on one defense; apply least-privilege identity/access management to secrets and API keys.",
+        "Hooks can hard-block destructive actions (e.g., refunds above a threshold) where prompt-only instructions have a non-zero failure rate."
+      ],
+      highYield:"Content from outside the direct user turn must be isolated as data, with guardrails/hooks enforcing what actions can follow — never rely on a polite instruction alone. This pattern recurs across every Claude certification.",
+      qs:[
+        {stem:"A Claude agent summarizes user-submitted web pages. One page contains hidden text instructing the agent to reveal internal system information. Most effective mitigation?",
+         opts:["Raise the temperature setting","Treat page content as untrusted data, isolate it from trusted instructions, and enforce guardrails/hooks against sensitive actions","Add a polite note asking users not to submit malicious pages","Switch to a larger, more instruction-following model"],
+         answer:1, rationale:"Isolating untrusted content as data plus enforced guardrails is the architectural defense against injection; a bigger model can be more susceptible, not less."},
+        {stem:"A team wants to guarantee an agent can never execute a destructive database delete, regardless of prompt phrasing. Best mechanism?",
+         opts:["A strongly worded system prompt instruction","A hook that programmatically intercepts and blocks the destructive tool call","Trusting the model's judgment alone","Increasing the model's context window"],
+         answer:1, rationale:"Deterministic guarantees require programmatic enforcement (hooks), not probabilistic prompt compliance."}
+      ]
+    },
+    { id:"d8", n:"08", weight:"10.6%", weightNum:10.6, title:"Tools and MCPs",
+      objectives:["Implement reliable tool calling and function schemas","Build and integrate MCP servers","Weigh tradeoffs across built-in tools, custom tools, Skills, and MCPs"],
+      notes:[
+        "Tool descriptions are the primary signal the model uses to select the right tool — vague or overlapping descriptions cause misrouting between similar tools.",
+        "MCP servers expose reusable tools/resources/prompts that multiple applications can share and maintain independently, vs. one-off custom tools embedded in a single app.",
+        "Tradeoffs: built-in tools are fastest to use but fixed in scope; custom tools/MCPs give control and reuse at the cost of build/maintenance effort; Skills package reusable instructions for on-demand loading."
+      ],
+      highYield:"'Needs to be reusable and independently maintained across multiple apps' signals an MCP server, not a hard-coded custom tool inside one application.",
+      qs:[
+        {stem:"Multiple internal Claude applications all need the same access to a ticketing system, maintained independently of any single app. Best approach?",
+         opts:["Hard-code ticketing logic into each application separately","Build an MCP server exposing ticketing operations as shared tools","Paste ticketing data into every prompt manually","Avoid tool use and rely on the model's general knowledge"],
+         answer:1, rationale:"Shared, independently maintained reusability across multiple apps is exactly the MCP server use case."},
+        {stem:"An agent frequently calls the wrong one of two similarly named tools. Most effective first fix?",
+         opts:["Rename and rewrite both tools' descriptions to clearly differentiate purpose, inputs, and when to use each","Remove both tools entirely","Increase the model's temperature","Add a five-second delay before tool calls"],
+         answer:0, rationale:"Tool descriptions are the model's primary selection signal — sharpening them fixes the root cause of misrouting."}
+      ]
+    }
   ]
 },
 {
-  id:"d3", n:"03", weight:"19%", title:"Integration",
-  objectives:[
-    "Evaluate tool/agent configuration for unnecessary capability",
-    "Analyze auth/authz setups for security gaps",
-    "Weigh accuracy-latency trade-offs and justify the configuration",
-    "Plan observability and monitoring that holds up at scale",
-    "Design RAG pipelines: chunking, indexing, retrieval strategy",
-    "Choose the right connection protocol (MCP, API/CLI, agent-to-agent)",
-    "Decide progressive discovery vs. loading everything into context upfront"
-  ],
-  notes:[
-    "<b>Least privilege on tools</b> — an agent should only hold the tools its role actually requires. The fix for a risky, unused, or overbroad tool is removing it, not logging or confirming it. This is the single most-repeated judgment pattern in the domain.",
-    "Auth/authz review means checking who or what can call which tool at what scope — overly broad API keys and missing per-user scoping are the classic gaps.",
-    "Accuracy-latency trade-offs must be justified against the task's real accuracy bar and SLA — more retrieval or more tool calls can buy accuracy, but only spend that cost where it's needed.",
-    "Observability at scale means structured logging, tracing, sampling, and alerting on anomalies (e.g. a spike in tool errors) — not just being able to debug one request by hand.",
-    "<b>RAG chunking</b> should follow document structure (by section/clause) rather than fixed token counts, especially for tasks that need to compare across sections. Retrieval strategy should match data shape: keyword/exact-match for IDs and codes, dense/semantic search for meaning-based queries, hybrid when both matter.",
-    "A stale or broken index is the most common cause of a RAG system suddenly giving <i>confident but wrong</i> answers right after a data refresh — check retrieval before suspecting the model.",
-    "<b>MCP</b> for standardized, reusable tool/data connections across agents; direct <b>API/CLI</b> for a one-off integration; <b>agent-to-agent</b> patterns for multi-agent coordination.",
-    "<b>Progressive discovery</b> (load tool/resource definitions on demand) beats a monolithic context stuffed with every possible tool as the number of integrations grows — it keeps token usage and tool-selection error rate down."
-  ],
-  highYield:"'Capability bloat' — an agent holding more tools/permissions than its task needs — raises error rate and risk even if none of the extra tools are ever misused. The exam consistently rewards scoping down over adding monitoring on top.",
-  qs:[
-    {stem:"A document-QA agent has a 'send_email' tool that's never actually used, added 'in case it's needed later.' Security review flags it. Correct response?",
-     opts:["Leave it — an unused tool carries no risk","Remove the tool until there is an actual use case","Add a confirmation step before any email send","Restrict the tool to admin users only"],
-     answer:1, rationale:"Least privilege means not holding capability that isn't needed yet, regardless of whether it's ever misused — remove it, don't merely guard it."},
-    {stem:"A RAG system over long legal contracts answers poorly when a question requires comparing clauses across different sections of the same document. Chunking is fixed-size (500 tokens, no overlap). Most likely fix?",
-     opts:["Switch to a larger embedding model","Increase top-k retrieved chunks only","Use structure-aware chunking (by clause/section) with overlap","Lower the similarity threshold for retrieval"],
-     answer:2, rationale:"Cross-section comparison needs chunks that preserve document structure and relationships; more of the same fragmented chunks (B) or a bigger embedding model (A) doesn't fix a structural chunking problem."},
-    {stem:"Two teams both need the same internal ticketing tool available to their independent Claude agents. What minimizes duplicated work and drift between the two implementations?",
-     opts:["Each team writes its own custom API wrapper independently","Expose the tool once via a standardized protocol (e.g., MCP) both agents can connect to","Give both teams direct database credentials","Have one team's agent call the other team's agent informally"],
-     answer:1, rationale:"A standardized, reusable connection point is exactly what protocols like MCP are for when multiple independent agents need the same tool."},
-    {stem:"A dashboard shows p50 latency is normal but p99 latency has spiked sharply this week with no code changes deployed. Most useful next diagnostic step?",
-     opts:["Assume it's noise and ignore it","Roll back to last week's code even though nothing changed","Investigate what's different about the slow-tail requests specifically (input size, a specific tool call, a downstream dependency)","Switch to a faster model immediately"],
-     answer:2, rationale:"A tail-only regression with no code change points to something specific to those requests, not a general model or code issue — the fix starts with characterizing the slow tail, not rolling back or swapping models blind."}
+  id:"arch-f", code:"CCAR-F", track:"Architect", level:"Foundations",
+  name:"Architect — Foundations", fee:"$125", items:60, minutes:120, passScore:720, validity:12,
+  examNote:"Scenario-based: 4 of 6 production scenarios are drawn per sitting — <b>Customer Support Resolution Agent</b>, <b>Code Generation with Claude Code</b>, <b>Multi-Agent Research System</b>, <b>Developer Productivity with Claude</b>, <b>Claude Code for Continuous Integration</b>, and <b>Structured Data Extraction</b> — each framing a set of questions around a realistic production context.",
+  domains:[
+    { id:"d1", n:"01", weight:"27%", weightNum:27, title:"Agentic Architecture & Orchestration",
+      objectives:["Design agentic loops and control flow around stop_reason","Orchestrate coordinator/subagent hierarchies","Configure subagent invocation and explicit context passing","Implement enforcement and handoff patterns for multi-step workflows","Apply hooks for tool-call interception and data normalization","Design task decomposition strategies","Manage session state, resumption, and forking"],
+      notes:[
+        "An agentic loop keeps running while the model calls tools (stop_reason 'tool_use') and stops once it produces a final answer ('end_turn') — loop control should key off this signal, not off parsing the model's natural-language text or an arbitrary iteration cap.",
+        "Coordinator/subagent (hub-and-spoke) orchestration: the coordinator owns decomposition, delegation, and result aggregation; subagents don't automatically inherit the coordinator's conversation — context has to be passed to them explicitly.",
+        "Narrow, over-specific task decomposition by the coordinator is a real failure mode: a broad topic split into too-narrow subtasks silently loses coverage of whatever wasn't explicitly assigned.",
+        "For workflows with hard compliance requirements (e.g., verify identity before a financial action), use programmatic prerequisites/hooks rather than prompt instructions alone — prompt-only compliance has a non-zero failure rate.",
+        "Hooks are the deterministic layer: normalize inconsistent data formats coming back from different tools, or block a policy-violating action outright, rather than hoping the model remembers the rule.",
+        "Parallel subagent work (multiple delegated calls issued together) beats sequential delegation when subtasks are independent — a straightforward latency win."
+      ],
+      highYield:"When a coordinator's decomposition silently misses part of a broad topic, the fix is broadening/adjusting the decomposition itself — not the subagents, which executed their (too-narrow) assignments correctly.",
+      qs:[
+        {stem:"A coordinator agent is asked to research 'trends in remote work' and splits the task into 'remote work software tools,' 'remote work real estate impact,' and 'remote hiring platforms.' The final report never covers employee wellbeing or productivity research, even though every subagent completed its assigned subtask correctly. Most likely root cause?",
+         opts:["The synthesis step failed to combine subagent outputs correctly","The coordinator's initial decomposition was too narrow and omitted a major facet of the topic","The subagents used low-quality sources","The context window was too small for the task"],
+         answer:1, rationale:"Subagents executed correctly within their assigned scope — the gap traces back to what the coordinator assigned them in the first place."},
+        {stem:"A multi-step approval workflow must always verify a manager's sign-off before an agent can issue a large payment, with zero tolerance for skipping this step. Which design guarantees this?",
+         opts:["A clear instruction in the system prompt stating sign-off is required first","A programmatic hook or prerequisite gate that blocks the payment tool until sign-off is confirmed","A few-shot example showing the correct order","Relying on the model's general reasoning to sequence it correctly"],
+         answer:1, rationale:"Zero-tolerance compliance requirements need deterministic, programmatic enforcement — prompt-based approaches have a non-zero failure rate."}
+      ]
+    },
+    { id:"d2", n:"02", weight:"18%", weightNum:18, title:"Tool Design & MCP Integration",
+      objectives:["Design tool interfaces with clear descriptions and boundaries","Implement structured, categorized error responses","Distribute tools across agents and configure tool choice","Integrate MCP servers into Claude Code and agent workflows","Select and apply built-in tools effectively"],
+      notes:[
+        "Tool descriptions are the model's primary basis for choosing between tools — thin or overlapping descriptions reliably cause misrouting; the fix is sharper, more specific descriptions or splitting/renaming tools, not piling on more examples.",
+        "Structured tool errors should distinguish failure types (transient/timeout, invalid input, policy/business rule, permission) and flag whether a retry is worth attempting — a generic 'failed' response gives the agent nothing to act on.",
+        "Giving one agent too many tools measurably hurts its tool-selection reliability; scope each agent's toolset tightly to its actual role, with only narrow, high-frequency exceptions crossing role boundaries.",
+        "MCP server scope: project-level config for tooling the whole team shares (checked into version control, using env-var references for secrets), user-level config for personal/experimental servers.",
+        "MCP resources let an agent see what data/catalogs are available without exploratory tool calls first — reduces wasted round-trips."
+      ],
+      highYield:"Two similarly-named tools with thin, near-identical descriptions getting confused by the agent is this domain's signature failure — the fix is always sharper/differentiated descriptions, not more examples layered on vague ones.",
+      qs:[
+        {stem:"An agent has both get_order_status and get_order_details, each described only as 'Gets order information.' It frequently calls the wrong one. Most effective first fix?",
+         opts:["Add ten few-shot examples showing correct usage","Rewrite both descriptions to clearly state distinct purposes, inputs, and when to use each versus the other","Delete one of the two tools with no replacement","Increase the model's context window"],
+         answer:1, rationale:"Tool descriptions are the model's primary selection signal; sharpening them addresses the root cause directly."},
+        {stem:"A tool call fails, and the agent receives only a generic {\"error\":\"failed\"} with no other detail. What does this prevent the agent from doing?",
+         opts:["Nothing — the agent can recover fine either way","Making an appropriate recovery decision, since it can't tell if the failure is retryable, a bad input, or a permissions issue","Calling any other tool afterward","Continuing the conversation at all"],
+         answer:1, rationale:"Structured error categorization is what enables intelligent recovery decisions; a generic status hides that information."}
+      ]
+    },
+    { id:"d3", n:"03", weight:"20%", weightNum:20, title:"Claude Code Configuration & Workflows",
+      objectives:["Configure CLAUDE.md hierarchy, scoping, and modular organization","Create custom slash commands and Skills","Apply path-specific rules for conditional convention loading","Determine when to use plan mode vs. direct execution","Apply iterative refinement techniques","Integrate Claude Code into CI/CD pipelines"],
+      notes:[
+        "CLAUDE.md hierarchy: user-level config is personal and not shared via version control; project-level config is what the whole team gets. A common failure is putting shared instructions at user-level by mistake, so teammates never receive them.",
+        "Splitting a large CLAUDE.md into topic-focused rule files (with path-based scoping) keeps context lean — rules load only for matching files rather than always being present.",
+        "Plan mode earns its cost on complex, architecturally significant, or multi-file changes where exploring and designing before committing prevents costly rework; direct execution suits small, well-scoped, well-understood changes.",
+        "CI/CD integration needs non-interactive invocation (so the pipeline doesn't hang waiting for input) and structured/machine-parseable output so results can be posted automatically, plus enough project context that automated reviews reflect real team standards.",
+        "Iterative refinement works best with concrete examples and, for well-specified transformations, a test-first approach — sharing test failures directly is often more effective than long prose re-explanations."
+      ],
+      highYield:"A 'new team member isn't getting the shared conventions everyone else has' scenario is a configuration-hierarchy diagnosis question — check project scope vs. user scope, not a model or tooling problem.",
+      qs:[
+        {stem:"A new engineer joins the team and their Claude Code sessions don't follow the team's established conventions, even though everyone else's do. Most likely cause?",
+         opts:["The conventions are defined in a personal, user-scoped configuration file rather than the project-scoped one","The new engineer has a different operating system","The model has a different version for new accounts","Conventions can't be shared across a team at all"],
+         answer:0, rationale:"Instructions living at user scope rather than project scope explain why only this one person is missing them."},
+        {stem:"A team wants to restructure a monolithic service into modules, touching 30+ files with multiple valid approaches to weigh. Best approach?",
+         opts:["Direct execution with a long upfront instruction covering every file","Plan mode first, to explore the codebase and settle on an approach before making changes","Random incremental changes, adjusting as issues appear","Skip planning since the task is well understood already"],
+         answer:1, rationale:"Large-scale, architecturally significant, multi-file changes are exactly what plan mode is designed to de-risk before committing."}
+      ]
+    },
+    { id:"d4", n:"04", weight:"20%", weightNum:20, title:"Prompt Engineering & Structured Output",
+      objectives:["Design prompts with explicit criteria to reduce false positives","Apply few-shot prompting for consistency and edge-case handling","Enforce structured output via tool use and JSON schemas","Implement validation, retry, and feedback loops","Design efficient batch processing strategies","Design multi-instance and multi-pass review architectures"],
+      notes:[
+        "Explicit, categorical criteria beat vague guidance ('be conservative,' 'only high-confidence findings') for controlling false-positive rates — specificity about what counts is what actually changes behavior.",
+        "Few-shot examples are the strongest lever for consistent formatting and for teaching the model to handle ambiguous edge cases it can then generalize from — stronger than more prose alone.",
+        "Enforcing structured output via tool-use with a JSON schema eliminates syntax errors, but not semantic ones (numbers that don't add up, values in the wrong field) — schema compliance and correctness are separate concerns.",
+        "Nullable/optional schema fields prevent the model from inventing a value just to satisfy a required field when the source document simply doesn't contain that information.",
+        "The batch API trades a possibly long, non-guaranteed processing window for a real cost discount, and doesn't support live mid-request tool calls — fits latency-tolerant bulk work, not blocking or interactive paths."
+      ],
+      highYield:"'Schema-valid output that's still wrong' (numbers don't reconcile, data in the wrong field) is this domain's reminder that tool-use/JSON-schema enforcement only guarantees syntax, never semantic correctness.",
+      qs:[
+        {stem:"An extraction pipeline outputs syntactically valid JSON via tool use, but auditors find line items that don't sum to the stated total. What does this reveal?",
+         opts:["Tool-use/JSON-schema enforcement failed","Schema enforcement prevents syntax errors but not semantic errors, which need separate validation logic","The model should be replaced with a bigger one","JSON schemas are unreliable and should not be used"],
+         answer:1, rationale:"Semantic correctness (values reconciling) is a distinct concern from schema-syntax validity and needs its own check."},
+        {stem:"A document extraction system sometimes needs a field the source document doesn't contain. Required fields with no way to indicate 'not present' lead to what problem?",
+         opts:["No problem — the model always leaves it blank correctly","The model may fabricate a plausible-looking value to satisfy the required field","The pipeline will simply throw a clear error every time","The schema will fail to validate every time"],
+         answer:1, rationale:"A required field with no null/optional escape hatch pressures the model to invent a value rather than say 'not present.'"}
+      ]
+    },
+    { id:"d5", n:"05", weight:"15%", weightNum:15, title:"Context Management & Reliability",
+      objectives:["Preserve critical information across long interactions","Design escalation and ambiguity-resolution patterns","Implement error propagation across multi-agent systems","Manage context in large codebase exploration","Design human review workflows and confidence calibration","Preserve information provenance in multi-source synthesis"],
+      notes:[
+        "Progressive summarization risk: compressing a conversation loses exact numbers, dates, and stated commitments unless those specific facts are pulled into a separate, always-included 'facts' block rather than trusted to survive summarization.",
+        "Long inputs suffer a 'lost in the middle' effect — content at the very start and end gets attended to more reliably than content buried in the middle, which matters for how synthesized/aggregated input is ordered.",
+        "Escalation should trigger on explicit customer request, a genuine policy gap, or real inability to progress — not on proxies like self-reported model confidence or detected sentiment, which don't reliably track actual case complexity.",
+        "Structured, specific error context (what failed, what was tried, what partial results exist) lets a coordinator make a real recovery decision; a generic failure status or silently returning 'no results' as success both remove that ability.",
+        "In long codebase-exploration or research sessions, scratchpad files / persisted state let an agent recover key findings instead of re-discovering everything or drifting into vaguer answers over time."
+      ],
+      highYield:"Miscalibrated escalation logic (escalating easy cases, missing hard ones) traces back to relying on self-reported confidence or sentiment as a complexity proxy — the fix is always explicit criteria with examples. This trap recurs across every certification that touches escalation.",
+      qs:[
+        {stem:"An agent has to synthesize a long list of tool results from earlier in a conversation. Where should the most critical facts be placed to minimize the risk they're overlooked?",
+         opts:["Buried in the middle of the aggregated content","At the very beginning (and optionally repeated at the end), not just the middle","It doesn't matter where facts are placed","Only at the very end"],
+         answer:1, rationale:"The 'lost in the middle' effect means content at the start and end is attended to most reliably."},
+        {stem:"An agent's escalation logic uses a self-reported confidence score to decide when to hand off to a human, but it escalates easy cases while confidently mishandling hard ones. Correct diagnosis?",
+         opts:["Self-reported model confidence is a poor proxy for actual case complexity; explicit escalation criteria with examples are needed instead","The confidence threshold just needs to be tuned slightly higher","This is expected and requires no change","Switch entirely to sentiment-based escalation instead"],
+         answer:0, rationale:"Self-reported confidence and sentiment are both unreliable complexity proxies; explicit, example-anchored criteria is the fix this domain consistently rewards."}
+      ]
+    }
   ]
 },
 {
-  id:"d4", n:"04", weight:"16%", title:"Evaluation, Testing &amp; Optimization",
-  objectives:[
-    "Define accuracy, latency, cost, safety, and security metrics upfront",
-    "Design eval datasets using mixed grading methods",
-    "Run A/B tests and iterate from measured deltas",
-    "Diagnose failures to the right layer of the system",
-    "Optimize token usage, latency, and cost-performance trade-offs",
-    "Monitor for regressions after deploy, not just at launch"
-  ],
-  notes:[
-    "Evals are acceptance criteria, defined <i>before</i> building — not a check performed after the fact. 'No eval set yet' is never the reason to skip evaluation; even a small one beats none.",
-    "Mix grading methods to the metric: code-graded (exact match/regex) for structured output, human-graded rubrics for open-ended quality, model-graded (LLM-as-judge) to scale review — use the cheapest method that stays reliable for that metric.",
-    "A/B test prompt, model, or architecture variants against the same fixed eval set so deltas are attributable to the change, not the test.",
-    "Diagnosing a failure means tracing it to the right layer — prompt failure, hallucination, wrong-model-for-task, or a broken retrieval/context step — before 'fixing' something that wasn't actually broken.",
-    "When something regresses right after a specific change (a doc refresh, a prompt edit, a model swap), check <i>that</i> change first — don't default to assuming the model itself silently changed.",
-    "Aggregate accuracy can hide regressions in specific slices — check safety and edge-case subsets separately before a broad rollout, even when the headline number looks fine.",
-    "Cost/latency levers, in rough order of blast radius: prompt caching, trimming unneeded context, batching, then — only if still needed — stepping down model size."
-  ],
-  highYield:"Symptom-to-cause discipline: match a regression to whatever changed most recently in the pipeline (data, prompt, model, retrieval index) rather than jumping to the most dramatic explanation. This exact reasoning appears repeatedly.",
-  qs:[
-    {stem:"A team wants to catch quality regressions before every deploy for a new open-ended summarization feature, but has no labeled dataset yet. Most defensible first step?",
-     opts:["Ship without evals since none exist yet","Build a small rubric-graded eval set (human or LLM-judge) against defined criteria","Wait for enough production complaints to know what to test","Track only latency and cost, since quality is subjective"],
-     answer:1, rationale:"Even a small, rubric-graded eval set beats shipping with none — 'subjective' quality can still be graded consistently against defined criteria."},
-    {stem:"After a model version swap, aggregate eval accuracy stayed flat and cost dropped 40%. What should happen before a full rollout?",
-     opts:["Roll out to 100% of traffic immediately","Reject the change since model behavior changed","Check safety and edge-case eval subsets specifically, not just the aggregate","Ignore evals since cost improved"],
-     answer:2, rationale:"A flat aggregate can mask regressions concentrated in safety-sensitive or edge-case slices — check those before trusting the headline number."},
-    {stem:"An LLM-judge eval scores a support agent on open-ended 'helpfulness' with no rubric, and scores swing between runs on the same output. Most likely fix?",
-     opts:["Run the judge more times and average blindly","Give the judge a specific, structured rubric with clear criteria instead of an open-ended question","Replace the LLM judge with a human for every response","Drop the helpfulness metric as too subjective to measure"],
-     answer:1, rationale:"Inconsistent LLM-judge scoring is usually a specification problem — a structured rubric fixes it far more directly than brute-force averaging or abandoning the metric."},
-    {stem:"Cost per request needs to drop on a well-defined extraction task currently using a top-tier model, without hurting accuracy. Correct order of operations?",
-     opts:["Jump straight to the smallest available model","Test whether a smaller/faster model meets the accuracy bar on the eval set; keep the top-tier model only where evals show it's needed","Shrink the eval set so results look better","Leave the model as-is since cost isn't worth the engineering time"],
-     answer:1, rationale:"Evidence-based right-sizing against the existing eval set is the domain's standard move — a blind downgrade or shrinking the eval set to flatter the result both skip the actual measurement step."}
-  ]
-},
-{
-  id:"d5", n:"05", weight:"14%", title:"Governance, Safety &amp; Risk Management",
-  objectives:[
-    "Implement input/output guardrails and tool-use controls",
-    "Identify risks and failure modes specific to LLM systems",
-    "Apply human-in-the-loop validation where it earns its cost",
-    "Map data types and sectors to the compliance regimes they trigger",
-    "Address bias, fairness, and transparency in system design"
-  ],
-  notes:[
-    "Layer guardrails at each boundary: input screening (block malicious/out-of-scope requests before the model sees them), output screening (check responses before they reach the user or a downstream system), and tool-use constraints (limit what actions an agent can actually take).",
-    "Core LLM failure modes to keep distinct: hallucination (confidently asserting unsupported facts), <b>prompt injection</b> (instructions smuggled in through untrusted content the model reads, not from the user), jailbreaking (the user directly trying to bypass instructions), data leakage, and automation bias (a human reviewer rubber-stamping AI output).",
-    "Treat all external or tool-sourced content as <i>data</i>, never as instructions — that's the standing defense against prompt injection.",
-    "Human-in-the-loop should be calibrated to reversibility and confidence, not applied uniformly — gate irreversible or high-stakes actions (payments, deletions, external sends) behind confirmation; low-stakes, reversible actions don't need the same friction.",
-    "Compliance is triggered by data type and sector, not bolted on generically: <b>GDPR</b> (data minimization, deletion rights, residency), <b>HIPAA</b> (protected health information, BAAs), <b>FedRAMP</b> (government cloud authorization).",
-    "Ethical AI review means testing for bias/disparate impact across user segments and being transparent that a user is interacting with, or being decisioned by, an AI system."
-  ],
-  highYield:"When content originates from an external document, webpage, or tool result rather than the user directly, and it contains instruction-like text, that's prompt injection — the fix is architectural (never execute instructions found in data), not a stronger refusal prompt.",
-  qs:[
-    {stem:"An internal tool summarizes uploaded PDFs that may come from untrusted external senders. One PDF contains hidden text instructing the assistant to exfiltrate other users' data. How should this risk be framed?",
-     opts:["A jailbreak attempt by the end user","A prompt injection via untrusted document content","A hallucination","A model weight issue"],
-     answer:1, rationale:"Instructions embedded in content the system reads — not supplied by the user directly — is the defining shape of prompt injection; the correct control treats document content as data, never as commands."},
-    {stem:"A healthcare intake assistant will process patient-submitted symptom descriptions. Which consideration is most directly triggered by this data type?",
-     opts:["FedRAMP authorization","HIPAA safeguards for protected health information","GDPR right-to-be-forgotten only","No special compliance beyond standard security practices"],
-     answer:1, rationale:"Patient health information triggers HIPAA specifically; FedRAMP applies to government cloud authorization, not the data type here."},
-    {stem:"An agent can both browse the web and execute code. It's given a task requiring it to read an untrusted web page. What's the key safety consideration specific to this tool combination?",
-     opts:["The agent might run out of context","Content from the page could contain instructions that get executed as code if not treated strictly as data","Web browsing is always safe once code execution is sandboxed","This combination needs no special handling beyond normal rate limiting"],
-     answer:1, rationale:"Combining untrusted content ingestion with code execution is a high-risk injection-to-action chain; the content must stay data and never become an executed instruction, regardless of sandboxing elsewhere."},
-    {stem:"A hiring-screening assistant shows a statistically significant pass-through disparity across demographic groups, even though no demographic field is used as direct input. What's most directly indicated?",
-     opts:["Conclude there's no issue since demographic data isn't a direct input","Investigate for proxy bias — correlated features driving the disparity — and mitigate before further use","Add a disclaimer to the tool's output","Increase model size to improve overall accuracy"],
-     answer:1, rationale:"Disparate impact can arise from features correlated with demographics even without a direct demographic input — fairness review has to look past 'not a direct input' to proxy effects."}
-  ]
-},
-{
-  id:"d6", n:"06", weight:"14%", title:"Stakeholder Communication &amp; Lifecycle Management",
-  objectives:[
-    "Run structured discovery before proposing architecture",
-    "Communicate trade-offs in terms stakeholders actually care about",
-    "Manage feedback loops and SLA alignment explicitly",
-    "Document architecture and the reasoning behind it",
-    "Support the full lifecycle: discovery, design, handoff, monitoring, iteration"
-  ],
-  notes:[
-    "Structured discovery comes before design: current process, success metrics, constraints (budget, timeline, compliance), and failure tolerance. A vague ask ('make it fast') gets converted into a measurable SLA before anything is designed.",
-    "Frame trade-offs in stakeholder language — cost, risk, time-to-value, SLA impact — not internal technical detail, and make the trade-off explicit rather than implied ('faster but less accurate' as a stated choice, not a hidden side effect).",
-    "Agree on explicit, measurable SLAs (accuracy threshold, response time, uptime) with stakeholders up front, so 'done' isn't a matter of opinion later.",
-    "Document not just the architecture but the <i>rationale</i> — why this pattern was chosen over the alternatives — so the design survives the original architect leaving the room.",
-    "Lifecycle doesn't end at launch: discovery → design → build/handoff → monitoring → iteration. Plan for monitoring and iteration from the start, not as an afterthought once something breaks."
-  ],
-  highYield:"When a scenario describes a handoff or ownership transition failing, the gap is almost always undocumented decision rationale, not a technical shortfall — the fix is making decisions explicit and reviewable, not adding more tests.",
-  qs:[
-    {stem:"A stakeholder asks for 'the fastest possible response time' with no further detail. Correct next step before designing anything?",
-     opts:["Assume they mean sub-second and design for that","Reuse a default SLA from a similar past project","Ask what response time the workflow actually needs, and convert it into an agreed, measurable SLA","Design for the fastest technically possible option regardless of cost"],
-     answer:2, rationale:"Structured discovery turns a vague ask into a measurable, mutually agreed SLA before design starts — guessing or defaulting skips the discovery step the domain is built around."},
-    {stem:"Six months after handoff, the original architect has left, and the team can't explain why a particular safety control exists. What was most likely missing?",
-     opts:["A faster model","Documented rationale behind the architectural decisions, not just the decisions themselves","More unit tests","A larger context window"],
-     answer:1, rationale:"A design 'only the architect understands' is a documentation failure — capturing the why, not just the what, is what lets a team operate the system independently."},
-    {stem:"Midway through a project, a stakeholder requests a new capability that would significantly increase latency, conflicting with the SLA agreed at kickoff. Best next step?",
-     opts:["Silently implement it and hope no one notices the SLA impact","Refuse the request outright with no discussion","Surface the trade-off explicitly — what the capability costs against the agreed SLA — and let the stakeholder make an informed call","Implement it in a way that hides the latency increase from monitoring"],
-     answer:2, rationale:"Explicit trade-off communication that lets the stakeholder make an informed decision is the domain's core skill; hiding the impact is a integrity failure, not a valid option."},
-    {stem:"A completed system is handed off with only a slide deck describing 'what' it does, not 'why' key decisions were made. Months later, an ops change reintroduces a safety issue the original design intentionally prevented. What lifecycle step failed?",
-     opts:["Discovery","Documentation of decision rationale during handoff","Initial model selection","Developer productivity tooling"],
-     answer:1, rationale:"This is the same 'why, not just what' documentation gap, now shown as the direct cause of a real regression during handoff — reinforcing that rationale, not just the diagram, has to transfer."}
-  ]
-},
-{
-  id:"d7", n:"07", weight:"7%", title:"Developer Productivity &amp; Operational Enablement",
-  objectives:[
-    "Configure Claude tools and environments consistently for a team",
-    "Improve developer workflows with AI-assisted tooling",
-    "Support debugging and operational issue resolution"
-  ],
-  notes:[
-    "Shared, version-controlled configuration (project-level settings, shared prompts/Skills, consistent tool permissions) beats each engineer building their own ad hoc setup — consistency across the team is the point of this domain.",
-    "AI-assisted developer workflows (e.g. Claude Code) should measurably speed up debugging and repetitive engineering work — but the goal is a team that can operate the system, not one person who can.",
-    "Operational enablement means the team has enough visibility — logs, runbooks, shared context — to debug a live system without the original architect being in the room.",
-    "Anything that increases dependence on a single person is the wrong answer in this domain, even if it's faster in the short term."
-  ],
-  highYield:"This is the smallest-weight domain (7%) but has a consistent tell: correct answers reduce single-person dependency and standardize team practice; answers that centralize expertise in one engineer are traps.",
-  qs:[
-    {stem:"Different engineers each configure their own ad hoc Claude Code settings and prompts, causing inconsistent output quality across the team. Best fix?",
-     opts:["Let each engineer keep a personal setup since preferences differ","Establish shared, version-controlled configuration and prompts the whole team uses","Restrict the tool to one senior engineer only","Switch to a different tool entirely"],
-     answer:1, rationale:"Standardizing shared, version-controlled configuration fixes the inconsistency directly; restricting to one person (C) increases single-person dependency, which this domain treats as the wrong direction."},
-    {stem:"A team wants AI-assisted debugging but worries about engineers losing understanding of their own codebase. Most balanced operational practice?",
-     opts:["Ban AI-assisted debugging entirely","Require engineers to review and understand suggested fixes before merging, with visibility via code review","Let AI commit fixes directly without review to save time","Only allow AI assistance for junior engineers"],
-     answer:1, rationale:"Keeping a human review step preserves team understanding and operational independence while still capturing the productivity gain — the extremes (ban it / auto-merge it) both fail the domain's goal."},
-    {stem:"Engineers' local Claude Code configurations silently diverge over months. Debugging a shared skill's behavior later is difficult because no one is sure which configuration produced a given result. What practice would have prevented this?",
-     opts:["Banning all local customization","Version-controlling shared configuration/skills so changes are tracked and reproducible across the team","Relying on each engineer's memory of what they changed","Only allowing one engineer to ever touch configuration"],
-     answer:1, rationale:"Tracked, reproducible shared configuration solves the drift directly; a total ban or single-owner model both trade the problem for the domain's other trap — over-centralization."},
-    {stem:"A team wants to know whether AI-assisted tooling is actually improving developer productivity rather than assuming it does. Most appropriate approach?",
-     opts:["Assume productivity gains and skip measurement to save time","Track concrete before/after metrics (e.g., cycle time, defect rate) for tasks using the tooling vs. not","Survey only the most enthusiastic early adopters","Judge success solely by how often the tooling is invoked"],
-     answer:1, rationale:"Concrete before/after outcome metrics test the actual claim; assuming, surveying only enthusiasts, or counting invocations all substitute a proxy for the real measurement."}
+  id:"arch-p", code:"CCAR-P", track:"Architect", level:"Professional",
+  name:"Architect — Professional", fee:"$175", items:63, minutes:120, passScore:720, validity:12,
+  domains:[
+    { id:"d1", n:"01", weight:"17%", weightNum:17, title:"Solution Design & Architecture",
+      objectives:[
+        "Turn an ambiguous business ask into a scoped Claude solution",
+        "Design the end-to-end loop: input → processing → output → feedback",
+        "Choose between workflow, agentic, and augmented-LLM patterns",
+        "Design multi-agent orchestration where it's actually warranted",
+        "Decompose complex problems before picking an architecture",
+        "Tie every design choice to a business value pillar"
+      ],
+      notes:[
+        "<b>Augmented LLM</b> — one call plus retrieval/tools/memory. Default starting point for bounded, mostly single-turn tasks.",
+        "<b>Workflow</b> — fixed code paths chaining LLM calls (chaining, routing, parallelization, orchestrator–worker, evaluator–optimizer). Use when the steps and their order are knowable in advance.",
+        "<b>Agentic</b> — Claude plans and sequences its own tool calls in a loop. Reach for this only when steps genuinely can't be predetermined; it costs more in latency, tokens, and control.",
+        "<b>Escalation order matters</b>: start at the simplest pattern that solves the task, and only add complexity (workflow → agent, single agent → multi-agent) when the simpler version demonstrably fails.",
+        "<b>Multi-agent orchestration</b> earns its cost on parallelizable, independent subtasks — coordination overhead and context-sharing between agents is real, so it isn't free scaling.",
+        "<b>Decomposition</b> comes before pattern selection: split the ambiguous problem into bounded subtasks with clear inputs/outputs, and decide what stays deterministic code vs. what Claude should own.",
+        "<b>Business value pillars</b> — efficiency, transformation, productivity, cost, performance SLAs. Exam scenarios often hinge on picking the *right* pillar to justify a decision, not just a plausible one."
+      ],
+      highYield:"When a scenario describes a task that could be solved with a fixed sequence of steps, the correct answer is almost never the fanciest architecture — it's the simplest one that still meets the requirement.",
+      qs:[
+        {stem:"A team wants Claude to run an onboarding process where the number and order of steps varies significantly case to case. Which pattern best fits?",
+         opts:["A fixed prompt-chaining workflow with hardcoded steps","A single augmented-LLM call with a very large system prompt","An agentic loop where Claude plans and sequences its own tool calls","A rules engine with no LLM involvement"],
+         answer:2, rationale:"Variable, unpredictable step count and order is the defining signal for an agentic pattern over a fixed workflow — the workflow (A) assumes known steps, and a single call (B) can't hold multi-step state."},
+        {stem:"A proposed Claude system would fully automate a report an analyst currently builds by hand in 2 hours/week. Which value pillar anchors this pitch to stakeholders?",
+         opts:["Transformation — a net-new capability","Efficiency — time and cost saved on an existing task","Performance SLA — latency and uptime targets","Productivity — augmenting judgment-heavy work"],
+         answer:1, rationale:"Automating an existing repetitive task is squarely an efficiency gain, not a new capability (transformation) or augmentation of human judgment (productivity)."},
+        {stem:"A fixed three-step workflow (extract → summarize → format) needs a variable number of extraction passes depending on unpredictable document length. What's the most appropriate change?",
+         opts:["Keep the fixed workflow and just increase the context window","Replace the fixed chain with an agentic loop that decides how many extraction passes to run","Add a fourth hardcoded step for 'long documents'","Switch to a bigger model so one pass is always enough"],
+         answer:1, rationale:"A data-dependent, unpredictable step count is the same agentic signal as before — this time framed as a workflow outgrowing its fixed shape as requirements evolve."},
+        {stem:"While decomposing a claims-processing system, an architect finds a subtask that is deterministic, rule-based, and has zero tolerance for ambiguity: a payout calculation from a fixed formula. What should own this subtask?",
+         opts:["Claude, using a very detailed system prompt","Claude, using chain-of-thought to show its work","Deterministic code outside the model, with Claude orchestrating around it","A human reviewer for every calculation"],
+         answer:2, rationale:"Zero-ambiguity-tolerance, formula-based logic belongs in deterministic code, not the model — this is the core 'what should Claude own' judgment decomposition is meant to produce."}
+      ]
+    },
+    { id:"d2", n:"02", weight:"13%", weightNum:13, title:"Claude Models, Prompting & Context Engineering",
+      objectives:[
+        "Pick a model based on real capability/cost/latency trade-offs, not habit",
+        "Design system prompts, templates, and guardrails deliberately",
+        "Apply zero-shot, few-shot, and chain-of-thought where each earns its cost",
+        "Manage the context window and token budget on purpose",
+        "Reuse prompts through caching, modular blocks, and Skills"
+      ],
+      notes:[
+        "Match model size to task complexity — the biggest model is not the default answer; high-volume, low-complexity tasks usually want the fastest/cheapest model that clears the accuracy bar.",
+        "System prompts carry the stable role, policy, and output-format instructions; structure them with clear sections so instructions, context, examples, and format don't blur together.",
+        "<b>Zero-shot</b> for simple, well-specified tasks. <b>Few-shot</b> (2–5 examples) to anchor format or tone the model keeps missing. <b>Chain-of-thought</b> only for genuinely multi-step reasoning — it adds latency and tokens, so it's a cost, not a free upgrade.",
+        "Context window strategy: put static, reusable content (system prompt, policy docs, tool definitions) <b>first</b>, and dynamic per-request content last — this is also what makes the prefix cacheable.",
+        "<b>Prompt caching</b> reuses an unchanged prefix across calls to cut both latency and cost — it's the standard answer whenever a scenario has large static content plus small varying input.",
+        "<b>Skills</b> and modular prompts let you load specialized instructions on demand instead of stuffing every possible instruction into every call."
+      ],
+      highYield:"Pattern to recognize instantly: 'same large static content every request + short varying user input + cost/latency concern' → the answer is order-stable-content-first and enable prompt caching. This exact shape repeats across exam scenarios.",
+      qs:[
+        {stem:"A support-ticket classifier must choose exactly one of 5 fixed categories under a strict low-latency budget. Best combination?",
+         opts:["The most capable model with chain-of-thought enabled","A smaller/faster model with one few-shot example per category","The most capable model with zero-shot instructions only","A smaller/faster model with a very long explanatory system prompt and no examples"],
+         answer:1, rationale:"Fixed, low-complexity classification under a latency budget favors a fast model anchored by a few-shot example per class; chain-of-thought adds latency the task doesn't need."},
+        {stem:"An agent sends the same 15,000-token policy manual on every call, followed by a short varying question. Cost per request is the concern. First move?",
+         opts:["Summarize the manual down to 500 tokens","Move the manual after the user's question","Keep the manual first, unchanged, and enable prompt caching","Switch every request to the smallest available model"],
+         answer:2, rationale:"A stable prefix ahead of varying content is exactly what prompt caching is for — it cuts cost without discarding policy coverage, unlike summarizing or blind downsizing."},
+        {stem:"A creative-writing assistant needs a consistent character voice across a long multi-turn conversation, and history is approaching the model's context limit. Best approach?",
+         opts:["Let the conversation truncate from the oldest turns with no strategy","Periodically summarize earlier turns into a compact running summary and drop the raw turns","Switch to a bigger-context model and never manage the window","Restart the conversation from scratch every 10 turns"],
+         answer:1, rationale:"Deliberate summarization/compaction preserves key facts under a token budget; unmanaged truncation and full resets both lose continuity, and a bigger context window just delays the same problem."},
+        {stem:"A prompt template separates &lt;instructions&gt;, &lt;context&gt;, and &lt;examples&gt; with explicit tags. Why does this matter?",
+         opts:["It looks more professional to stakeholders","It reduces token count significantly","It gives the model unambiguous structure to distinguish instructions from content, reducing the risk content is misread as an instruction","It's required by the Claude API"],
+         answer:2, rationale:"Explicit structure disambiguates instructions from data for the model — the same underlying principle that defends against content being misread as commands."}
+      ]
+    },
+    { id:"d3", n:"03", weight:"19%", weightNum:19, title:"Integration",
+      objectives:[
+        "Evaluate tool/agent configuration for unnecessary capability",
+        "Analyze auth/authz setups for security gaps",
+        "Weigh accuracy-latency trade-offs and justify the configuration",
+        "Plan observability and monitoring that holds up at scale",
+        "Design RAG pipelines: chunking, indexing, retrieval strategy",
+        "Choose the right connection protocol (MCP, API/CLI, agent-to-agent)",
+        "Decide progressive discovery vs. loading everything into context upfront"
+      ],
+      notes:[
+        "<b>Least privilege on tools</b> — an agent should only hold the tools its role actually requires. The fix for a risky, unused, or overbroad tool is removing it, not logging or confirming it. This is the single most-repeated judgment pattern in the domain.",
+        "Auth/authz review means checking who or what can call which tool at what scope — overly broad API keys and missing per-user scoping are the classic gaps.",
+        "Accuracy-latency trade-offs must be justified against the task's real accuracy bar and SLA — more retrieval or more tool calls can buy accuracy, but only spend that cost where it's needed.",
+        "Observability at scale means structured logging, tracing, sampling, and alerting on anomalies (e.g. a spike in tool errors) — not just being able to debug one request by hand.",
+        "<b>RAG chunking</b> should follow document structure (by section/clause) rather than fixed token counts, especially for tasks that need to compare across sections. Retrieval strategy should match data shape: keyword/exact-match for IDs and codes, dense/semantic search for meaning-based queries, hybrid when both matter.",
+        "A stale or broken index is the most common cause of a RAG system suddenly giving <i>confident but wrong</i> answers right after a data refresh — check retrieval before suspecting the model.",
+        "<b>MCP</b> for standardized, reusable tool/data connections across agents; direct <b>API/CLI</b> for a one-off integration; <b>agent-to-agent</b> patterns for multi-agent coordination.",
+        "<b>Progressive discovery</b> (load tool/resource definitions on demand) beats a monolithic context stuffed with every possible tool as the number of integrations grows — it keeps token usage and tool-selection error rate down."
+      ],
+      highYield:"'Capability bloat' — an agent holding more tools/permissions than its task needs — raises error rate and risk even if none of the extra tools are ever misused. The exam consistently rewards scoping down over adding monitoring on top.",
+      qs:[
+        {stem:"A document-QA agent has a 'send_email' tool that's never actually used, added 'in case it's needed later.' Security review flags it. Correct response?",
+         opts:["Leave it — an unused tool carries no risk","Remove the tool until there is an actual use case","Add a confirmation step before any email send","Restrict the tool to admin users only"],
+         answer:1, rationale:"Least privilege means not holding capability that isn't needed yet, regardless of whether it's ever misused — remove it, don't merely guard it."},
+        {stem:"A RAG system over long legal contracts answers poorly when a question requires comparing clauses across different sections of the same document. Chunking is fixed-size (500 tokens, no overlap). Most likely fix?",
+         opts:["Switch to a larger embedding model","Increase top-k retrieved chunks only","Use structure-aware chunking (by clause/section) with overlap","Lower the similarity threshold for retrieval"],
+         answer:2, rationale:"Cross-section comparison needs chunks that preserve document structure and relationships; more of the same fragmented chunks (B) or a bigger embedding model (A) doesn't fix a structural chunking problem."},
+        {stem:"Two teams both need the same internal ticketing tool available to their independent Claude agents. What minimizes duplicated work and drift between the two implementations?",
+         opts:["Each team writes its own custom API wrapper independently","Expose the tool once via a standardized protocol (e.g., MCP) both agents can connect to","Give both teams direct database credentials","Have one team's agent call the other team's agent informally"],
+         answer:1, rationale:"A standardized, reusable connection point is exactly what protocols like MCP are for when multiple independent agents need the same tool."},
+        {stem:"A dashboard shows p50 latency is normal but p99 latency has spiked sharply this week with no code changes deployed. Most useful next diagnostic step?",
+         opts:["Assume it's noise and ignore it","Roll back to last week's code even though nothing changed","Investigate what's different about the slow-tail requests specifically (input size, a specific tool call, a downstream dependency)","Switch to a faster model immediately"],
+         answer:2, rationale:"A tail-only regression with no code change points to something specific to those requests, not a general model or code issue — the fix starts with characterizing the slow tail, not rolling back or swapping models blind."}
+      ]
+    },
+    { id:"d4", n:"04", weight:"16%", weightNum:16, title:"Evaluation, Testing & Optimization",
+      objectives:[
+        "Define accuracy, latency, cost, safety, and security metrics upfront",
+        "Design eval datasets using mixed grading methods",
+        "Run A/B tests and iterate from measured deltas",
+        "Diagnose failures to the right layer of the system",
+        "Optimize token usage, latency, and cost-performance trade-offs",
+        "Monitor for regressions after deploy, not just at launch"
+      ],
+      notes:[
+        "Evals are acceptance criteria, defined <i>before</i> building — not a check performed after the fact. 'No eval set yet' is never the reason to skip evaluation; even a small one beats none.",
+        "Mix grading methods to the metric: code-graded (exact match/regex) for structured output, human-graded rubrics for open-ended quality, model-graded (LLM-as-judge) to scale review — use the cheapest method that stays reliable for that metric.",
+        "A/B test prompt, model, or architecture variants against the same fixed eval set so deltas are attributable to the change, not the test.",
+        "Diagnosing a failure means tracing it to the right layer — prompt failure, hallucination, wrong-model-for-task, or a broken retrieval/context step — before 'fixing' something that wasn't actually broken.",
+        "When something regresses right after a specific change (a doc refresh, a prompt edit, a model swap), check <i>that</i> change first — don't default to assuming the model itself silently changed.",
+        "Aggregate accuracy can hide regressions in specific slices — check safety and edge-case subsets separately before a broad rollout, even when the headline number looks fine.",
+        "Cost/latency levers, in rough order of blast radius: prompt caching, trimming unneeded context, batching, then — only if still needed — stepping down model size."
+      ],
+      highYield:"Symptom-to-cause discipline: match a regression to whatever changed most recently in the pipeline (data, prompt, model, retrieval index) rather than jumping to the most dramatic explanation. This exact reasoning appears repeatedly.",
+      qs:[
+        {stem:"A team wants to catch quality regressions before every deploy for a new open-ended summarization feature, but has no labeled dataset yet. Most defensible first step?",
+         opts:["Ship without evals since none exist yet","Build a small rubric-graded eval set (human or LLM-judge) against defined criteria","Wait for enough production complaints to know what to test","Track only latency and cost, since quality is subjective"],
+         answer:1, rationale:"Even a small, rubric-graded eval set beats shipping with none — 'subjective' quality can still be graded consistently against defined criteria."},
+        {stem:"After a model version swap, aggregate eval accuracy stayed flat and cost dropped 40%. What should happen before a full rollout?",
+         opts:["Roll out to 100% of traffic immediately","Reject the change since model behavior changed","Check safety and edge-case eval subsets specifically, not just the aggregate","Ignore evals since cost improved"],
+         answer:2, rationale:"A flat aggregate can mask regressions concentrated in safety-sensitive or edge-case slices — check those before trusting the headline number."},
+        {stem:"An LLM-judge eval scores a support agent on open-ended 'helpfulness' with no rubric, and scores swing between runs on the same output. Most likely fix?",
+         opts:["Run the judge more times and average blindly","Give the judge a specific, structured rubric with clear criteria instead of an open-ended question","Replace the LLM judge with a human for every response","Drop the helpfulness metric as too subjective to measure"],
+         answer:1, rationale:"Inconsistent LLM-judge scoring is usually a specification problem — a structured rubric fixes it far more directly than brute-force averaging or abandoning the metric."},
+        {stem:"Cost per request needs to drop on a well-defined extraction task currently using a top-tier model, without hurting accuracy. Correct order of operations?",
+         opts:["Jump straight to the smallest available model","Test whether a smaller/faster model meets the accuracy bar on the eval set; keep the top-tier model only where evals show it's needed","Shrink the eval set so results look better","Leave the model as-is since cost isn't worth the engineering time"],
+         answer:1, rationale:"Evidence-based right-sizing against the existing eval set is the domain's standard move — a blind downgrade or shrinking the eval set to flatter the result both skip the actual measurement step."}
+      ]
+    },
+    { id:"d5", n:"05", weight:"14%", weightNum:14, title:"Governance, Safety & Risk Management",
+      objectives:[
+        "Implement input/output guardrails and tool-use controls",
+        "Identify risks and failure modes specific to LLM systems",
+        "Apply human-in-the-loop validation where it earns its cost",
+        "Map data types and sectors to the compliance regimes they trigger",
+        "Address bias, fairness, and transparency in system design"
+      ],
+      notes:[
+        "Layer guardrails at each boundary: input screening (block malicious/out-of-scope requests before the model sees them), output screening (check responses before they reach the user or a downstream system), and tool-use constraints (limit what actions an agent can actually take).",
+        "Core LLM failure modes to keep distinct: hallucination (confidently asserting unsupported facts), <b>prompt injection</b> (instructions smuggled in through untrusted content the model reads, not from the user), jailbreaking (the user directly trying to bypass instructions), data leakage, and automation bias (a human reviewer rubber-stamping AI output).",
+        "Treat all external or tool-sourced content as <i>data</i>, never as instructions — that's the standing defense against prompt injection.",
+        "Human-in-the-loop should be calibrated to reversibility and confidence, not applied uniformly — gate irreversible or high-stakes actions (payments, deletions, external sends) behind confirmation; low-stakes, reversible actions don't need the same friction.",
+        "Compliance is triggered by data type and sector, not bolted on generically: <b>GDPR</b> (data minimization, deletion rights, residency), <b>HIPAA</b> (protected health information, BAAs), <b>FedRAMP</b> (government cloud authorization).",
+        "Ethical AI review means testing for bias/disparate impact across user segments and being transparent that a user is interacting with, or being decisioned by, an AI system."
+      ],
+      highYield:"When content originates from an external document, webpage, or tool result rather than the user directly, and it contains instruction-like text, that's prompt injection — the fix is architectural (never execute instructions found in data), not a stronger refusal prompt.",
+      qs:[
+        {stem:"An internal tool summarizes uploaded PDFs that may come from untrusted external senders. One PDF contains hidden text instructing the assistant to exfiltrate other users' data. How should this risk be framed?",
+         opts:["A jailbreak attempt by the end user","A prompt injection via untrusted document content","A hallucination","A model weight issue"],
+         answer:1, rationale:"Instructions embedded in content the system reads — not supplied by the user directly — is the defining shape of prompt injection; the correct control treats document content as data, never as commands."},
+        {stem:"A healthcare intake assistant will process patient-submitted symptom descriptions. Which consideration is most directly triggered by this data type?",
+         opts:["FedRAMP authorization","HIPAA safeguards for protected health information","GDPR right-to-be-forgotten only","No special compliance beyond standard security practices"],
+         answer:1, rationale:"Patient health information triggers HIPAA specifically; FedRAMP applies to government cloud authorization, not the data type here."},
+        {stem:"An agent can both browse the web and execute code. It's given a task requiring it to read an untrusted web page. What's the key safety consideration specific to this tool combination?",
+         opts:["The agent might run out of context","Content from the page could contain instructions that get executed as code if not treated strictly as data","Web browsing is always safe once code execution is sandboxed","This combination needs no special handling beyond normal rate limiting"],
+         answer:1, rationale:"Combining untrusted content ingestion with code execution is a high-risk injection-to-action chain; the content must stay data and never become an executed instruction, regardless of sandboxing elsewhere."},
+        {stem:"A hiring-screening assistant shows a statistically significant pass-through disparity across demographic groups, even though no demographic field is used as direct input. What's most directly indicated?",
+         opts:["Conclude there's no issue since demographic data isn't a direct input","Investigate for proxy bias — correlated features driving the disparity — and mitigate before further use","Add a disclaimer to the tool's output","Increase model size to improve overall accuracy"],
+         answer:1, rationale:"Disparate impact can arise from features correlated with demographics even without a direct demographic input — fairness review has to look past 'not a direct input' to proxy effects."}
+      ]
+    },
+    { id:"d6", n:"06", weight:"14%", weightNum:14, title:"Stakeholder Communication & Lifecycle Management",
+      objectives:[
+        "Run structured discovery before proposing architecture",
+        "Communicate trade-offs in terms stakeholders actually care about",
+        "Manage feedback loops and SLA alignment explicitly",
+        "Document architecture and the reasoning behind it",
+        "Support the full lifecycle: discovery, design, handoff, monitoring, iteration"
+      ],
+      notes:[
+        "Structured discovery comes before design: current process, success metrics, constraints (budget, timeline, compliance), and failure tolerance. A vague ask ('make it fast') gets converted into a measurable SLA before anything is designed.",
+        "Frame trade-offs in stakeholder language — cost, risk, time-to-value, SLA impact — not internal technical detail, and make the trade-off explicit rather than implied ('faster but less accurate' as a stated choice, not a hidden side effect).",
+        "Agree on explicit, measurable SLAs (accuracy threshold, response time, uptime) with stakeholders up front, so 'done' isn't a matter of opinion later.",
+        "Document not just the architecture but the <i>rationale</i> — why this pattern was chosen over the alternatives — so the design survives the original architect leaving the room.",
+        "Lifecycle doesn't end at launch: discovery → design → build/handoff → monitoring → iteration. Plan for monitoring and iteration from the start, not as an afterthought once something breaks."
+      ],
+      highYield:"When a scenario describes a handoff or ownership transition failing, the gap is almost always undocumented decision rationale, not a technical shortfall — the fix is making decisions explicit and reviewable, not adding more tests.",
+      qs:[
+        {stem:"A stakeholder asks for 'the fastest possible response time' with no further detail. Correct next step before designing anything?",
+         opts:["Assume they mean sub-second and design for that","Reuse a default SLA from a similar past project","Ask what response time the workflow actually needs, and convert it into an agreed, measurable SLA","Design for the fastest technically possible option regardless of cost"],
+         answer:2, rationale:"Structured discovery turns a vague ask into a measurable, mutually agreed SLA before design starts — guessing or defaulting skips the discovery step the domain is built around."},
+        {stem:"Six months after handoff, the original architect has left, and the team can't explain why a particular safety control exists. What was most likely missing?",
+         opts:["A faster model","Documented rationale behind the architectural decisions, not just the decisions themselves","More unit tests","A larger context window"],
+         answer:1, rationale:"A design 'only the architect understands' is a documentation failure — capturing the why, not just the what, is what lets a team operate the system independently."},
+        {stem:"Midway through a project, a stakeholder requests a new capability that would significantly increase latency, conflicting with the SLA agreed at kickoff. Best next step?",
+         opts:["Silently implement it and hope no one notices the SLA impact","Refuse the request outright with no discussion","Surface the trade-off explicitly — what the capability costs against the agreed SLA — and let the stakeholder make an informed call","Implement it in a way that hides the latency increase from monitoring"],
+         answer:2, rationale:"Explicit trade-off communication that lets the stakeholder make an informed decision is the domain's core skill; hiding the impact is a integrity failure, not a valid option."},
+        {stem:"A completed system is handed off with only a slide deck describing 'what' it does, not 'why' key decisions were made. Months later, an ops change reintroduces a safety issue the original design intentionally prevented. What lifecycle step failed?",
+         opts:["Discovery","Documentation of decision rationale during handoff","Initial model selection","Developer productivity tooling"],
+         answer:1, rationale:"This is the same 'why, not just what' documentation gap, now shown as the direct cause of a real regression during handoff — reinforcing that rationale, not just the diagram, has to transfer."}
+      ]
+    },
+    { id:"d7", n:"07", weight:"7%", weightNum:7, title:"Developer Productivity & Operational Enablement",
+      objectives:[
+        "Configure Claude tools and environments consistently for a team",
+        "Improve developer workflows with AI-assisted tooling",
+        "Support debugging and operational issue resolution"
+      ],
+      notes:[
+        "Shared, version-controlled configuration (project-level settings, shared prompts/Skills, consistent tool permissions) beats each engineer building their own ad hoc setup — consistency across the team is the point of this domain.",
+        "AI-assisted developer workflows (e.g. Claude Code) should measurably speed up debugging and repetitive engineering work — but the goal is a team that can operate the system, not one person who can.",
+        "Operational enablement means the team has enough visibility — logs, runbooks, shared context — to debug a live system without the original architect being in the room.",
+        "Anything that increases dependence on a single person is the wrong answer in this domain, even if it's faster in the short term."
+      ],
+      highYield:"This is the smallest-weight domain (7%) but has a consistent tell: correct answers reduce single-person dependency and standardize team practice; answers that centralize expertise in one engineer are traps.",
+      qs:[
+        {stem:"Different engineers each configure their own ad hoc Claude Code settings and prompts, causing inconsistent output quality across the team. Best fix?",
+         opts:["Let each engineer keep a personal setup since preferences differ","Establish shared, version-controlled configuration and prompts the whole team uses","Restrict the tool to one senior engineer only","Switch to a different tool entirely"],
+         answer:1, rationale:"Standardizing shared, version-controlled configuration fixes the inconsistency directly; restricting to one person (C) increases single-person dependency, which this domain treats as the wrong direction."},
+        {stem:"A team wants AI-assisted debugging but worries about engineers losing understanding of their own codebase. Most balanced operational practice?",
+         opts:["Ban AI-assisted debugging entirely","Require engineers to review and understand suggested fixes before merging, with visibility via code review","Let AI commit fixes directly without review to save time","Only allow AI assistance for junior engineers"],
+         answer:1, rationale:"Keeping a human review step preserves team understanding and operational independence while still capturing the productivity gain — the extremes (ban it / auto-merge it) both fail the domain's goal."},
+        {stem:"Engineers' local Claude Code configurations silently diverge over months. Debugging a shared skill's behavior later is difficult because no one is sure which configuration produced a given result. What practice would have prevented this?",
+         opts:["Banning all local customization","Version-controlling shared configuration/skills so changes are tracked and reproducible across the team","Relying on each engineer's memory of what they changed","Only allowing one engineer to ever touch configuration"],
+         answer:1, rationale:"Tracked, reproducible shared configuration solves the drift directly; a total ban or single-owner model both trade the problem for the domain's other trap — over-centralization."},
+        {stem:"A team wants to know whether AI-assisted tooling is actually improving developer productivity rather than assuming it does. Most appropriate approach?",
+         opts:["Assume productivity gains and skip measurement to save time","Track concrete before/after metrics (e.g., cycle time, defect rate) for tasks using the tooling vs. not","Survey only the most enthusiastic early adopters","Judge success solely by how often the tooling is invoked"],
+         answer:1, rationale:"Concrete before/after outcome metrics test the actual claim; assuming, surveying only enthusiasts, or counting invocations all substitute a proxy for the real measurement."}
+      ]
+    }
   ]
 }
 ];
+const TRACK_META = {
+  "Associate":{desc:"Business & productivity users applying Claude day-to-day."},
+  "Developer":{desc:"Engineers building applications, agents, and tools on the API/SDK."},
+  "Architect":{desc:"Solution architects designing, integrating, and governing Claude systems."}
+};
+const TRACKS = ["Associate","Developer","Architect"];
+const REV_KEY = "claude-cert-reviewed";
+const BEST_PREFIX = "claude-cert-best-";
 
-const main = document.getElementById('domains');
-DOMAINS.forEach(d=>{
-  const sec = document.createElement('section');
-  sec.className='domain'; sec.id=d.id;
-  sec.innerHTML = `
-    <div class="domain-head">
-      <div>
-        <span class="domain-tag">Domain ${d.n}</span>
-        <h2>${d.title}</h2>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center;">
-        <span class="weight-pill">${d.weight} of exam</span>
-        <button class="mark-btn" data-id="${d.id}">Mark reviewed</button>
-      </div>
-    </div>
-    <h3>Blueprint objectives</h3>
-    <ul class="obj-list">${d.objectives.map(o=>`<li>${o}</li>`).join('')}</ul>
-    <h3>Field notes</h3>
-    <ul class="notes">${d.notes.map(n=>`<li>${n}</li>`).join('')}</ul>
-    <div class="callout"><span class="lbl">High-yield</span>${d.highYield}</div>
-    <h3>Self-test</h3>
-    ${d.qs.map((q,i)=>`
-      <div class="q">
-        <div class="stem">${q.stem}</div>
-        ${q.opts.map((o,oi)=>`<div class="opt"><b>${String.fromCharCode(65+oi)}.</b> ${o}</div>`).join('')}
-        <button class="qbtn" data-target="${d.id}-a${i}">Show answer</button>
-        <div class="answer" id="${d.id}-a${i}"><b>${String.fromCharCode(65+q.answer)}.</b> ${q.opts[q.answer]} — ${q.rationale}</div>
-      </div>
-    `).join('')}
-  `;
-  main.appendChild(sec);
-});
+let currentExamId = EXAMS[0].id;
 
-const STORE_KEY='ccarp-reviewed';
-function getReviewed(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY))||{}; }catch(e){ return {}; } }
-function setReviewed(obj){ localStorage.setItem(STORE_KEY, JSON.stringify(obj)); }
-function renderProgress(){
+function getReviewed(){ try{ return JSON.parse(localStorage.getItem(REV_KEY))||{}; }catch(e){ return {}; } }
+function setReviewed(obj){ localStorage.setItem(REV_KEY, JSON.stringify(obj)); }
+function examDone(exam){
   const rev = getReviewed();
-  const ids = DOMAINS.map(d=>d.id);
-  const doneCount = ids.filter(id=>rev[id]).length;
-  document.querySelectorAll('.nav a').forEach(a=>{
-    a.classList.toggle('done', !!rev[a.dataset.id]);
-  });
-  document.querySelectorAll('.mark-btn').forEach(b=>{
-    const on = !!rev[b.dataset.id];
-    b.classList.toggle('on', on);
-    b.textContent = on ? 'Reviewed ✓' : 'Mark reviewed';
-  });
-  document.getElementById('prog-text').innerHTML = `<b>${doneCount}</b> / 7 domains reviewed`;
-  document.getElementById('prog-bar').style.width = (doneCount/7*100)+'%';
+  return exam.domains.every(d=>rev[currentExamId===exam.id?exam.id:exam.id+":"+d.id] || rev[exam.id+":"+d.id]);
 }
+
+function renderTracks(){
+  const wrap = document.getElementById('tracks');
+  wrap.innerHTML = TRACKS.map(track=>{
+    const exams = EXAMS.filter(e=>e.track===track);
+    const chips = exams.map((e,i)=>{
+      const rev = getReviewed();
+      const total = e.domains.length;
+      const done = e.domains.filter(d=>rev[e.id+":"+d.id]).length;
+      const isDone = done===total;
+      const active = e.id===currentExamId;
+      const chip = `<button class="level-chip${active?' active':''}${isDone?' done':''}" data-exam="${e.id}">
+        <span class="lv">${e.level}</span>
+        <span class="px">${e.code} · ${e.fee}</span>
+      </button>`;
+      return i>0 ? `<span class="level-arrow">→</span>${chip}` : chip;
+    }).join('');
+    return `<div class="track-card">
+      <div class="track-name">${track}</div>
+      <div class="track-desc">${TRACK_META[track].desc}</div>
+      <div class="levels">${chips}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderStatStrip(exam){
+  document.getElementById('stat-strip').innerHTML = `
+    <div class="stat"><div class="n">${exam.items}</div><div class="l">Items</div></div>
+    <div class="stat"><div class="n">${exam.minutes}</div><div class="l">Minutes</div></div>
+    <div class="stat"><div class="n">${exam.passScore}</div><div class="l">Pass score / 1000</div></div>
+    <div class="stat"><div class="n">${exam.fee}</div><div class="l">Exam fee</div></div>
+    <div class="stat"><div class="n">${exam.validity}</div><div class="l">Month validity</div></div>
+  `;
+  const noteEl = document.getElementById('exam-note');
+  if(exam.examNote){ noteEl.style.display='block'; noteEl.innerHTML = exam.examNote; }
+  else { noteEl.style.display='none'; }
+}
+
+function renderWeightBars(exam){
+  document.getElementById('wb-eyebrow').textContent = `${exam.code} BLUEPRINT — SCORED ITEM DISTRIBUTION BY DOMAIN`;
+  const maxW = Math.max(...exam.domains.map(d=>d.weightNum));
+  document.getElementById('wb-rows').innerHTML = exam.domains.map(d=>`
+    <div class="wb-row">
+      <div class="wb-name">D${d.n} · ${d.title}</div>
+      <div class="wb-track"><div class="wb-fill" style="width:${(d.weightNum/maxW*100).toFixed(0)}%"></div></div>
+      <div class="wb-pct">${d.weight}</div>
+    </div>
+  `).join('');
+}
+
+function renderNav(exam){
+  const rev = getReviewed();
+  const links = exam.domains.map(d=>{
+    const key = exam.id+":"+d.id;
+    const done = !!rev[key];
+    return `<a href="#${d.id}" data-id="${d.id}" class="${done?'done':''}"><span class="dot"></span> ${d.title} <span class="wt">${d.weight}</span></a>`;
+  }).join('');
+  document.getElementById('nav-links').innerHTML = links;
+  updateNavProgress(exam);
+}
+
+function updateNavProgress(exam){
+  const rev = getReviewed();
+  const total = exam.domains.length;
+  const done = exam.domains.filter(d=>rev[exam.id+":"+d.id]).length;
+  document.getElementById('prog-text').innerHTML = `<b>${done}</b> / ${total} domains reviewed`;
+  document.getElementById('prog-bar').style.width = (done/total*100)+'%';
+}
+
+function renderDomains(exam){
+  const main = document.getElementById('domains');
+  const rev = getReviewed();
+  main.innerHTML = exam.domains.map(d=>{
+    const key = exam.id+":"+d.id;
+    const on = !!rev[key];
+    return `
+    <section class="domain" id="${d.id}">
+      <div class="domain-head">
+        <div>
+          <span class="domain-tag">Domain ${d.n}</span>
+          <h2>${d.title}</h2>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="weight-pill">${d.weight} of exam</span>
+          <button class="mark-btn${on?' on':''}" data-key="${key}">${on?'Reviewed ✓':'Mark reviewed'}</button>
+        </div>
+      </div>
+      <h3>Blueprint objectives</h3>
+      <ul class="obj-list">${d.objectives.map(o=>`<li>${o}</li>`).join('')}</ul>
+      <h3>Field notes</h3>
+      <ul class="notes">${d.notes.map(n=>`<li>${n}</li>`).join('')}</ul>
+      <div class="callout"><span class="lbl">High-yield</span>${d.highYield}</div>
+      <h3>Self-test</h3>
+      ${d.qs.map((q,i)=>`
+        <div class="q">
+          <div class="stem">${q.stem}</div>
+          ${q.opts.map((o,oi)=>`<div class="opt"><b>${String.fromCharCode(65+oi)}.</b> ${o}</div>`).join('')}
+          <button class="qbtn" data-target="${exam.id}-${d.id}-a${i}">Show answer</button>
+          <div class="answer" id="${exam.id}-${d.id}-a${i}"><b>${String.fromCharCode(65+q.answer)}.</b> ${q.opts[q.answer]} — ${q.rationale}</div>
+        </div>
+      `).join('')}
+    </section>`;
+  }).join('');
+}
+
+function showBestScore(exam){
+  const best = localStorage.getItem(BEST_PREFIX+exam.id);
+  document.getElementById('best-score').innerHTML = best ? `Best: <b>${best}%</b>` : '';
+}
+
+function examQuestionMeta(exam){
+  const poolSize = exam.domains.reduce((s,d)=>s+d.qs.length,0);
+  const minutes = Math.max(1, Math.round(poolSize * (exam.minutes/exam.items)));
+  return {poolSize, minutes};
+}
+
+function renderExamCta(exam){
+  const {poolSize, minutes} = examQuestionMeta(exam);
+  document.getElementById('exam-cta-desc').textContent = `${poolSize} questions · ${minutes} min · scaled to the real ${exam.items}-item / ${exam.minutes}-min ratio`;
+  showBestScore(exam);
+}
+
+function selectExam(examId){
+  currentExamId = examId;
+  const exam = EXAMS.find(e=>e.id===examId);
+  renderTracks();
+  renderStatStrip(exam);
+  renderWeightBars(exam);
+  renderExamCta(exam);
+  renderNav(exam);
+  renderDomains(exam);
+  window.scrollTo(0,0);
+}
+
 document.addEventListener('click', e=>{
+  const chip = e.target.closest('.level-chip');
+  if(chip){ selectExam(chip.dataset.exam); return; }
+
   const btn = e.target.closest('.mark-btn');
   if(btn){
     const rev = getReviewed();
-    rev[btn.dataset.id] = !rev[btn.dataset.id];
+    rev[btn.dataset.key] = !rev[btn.dataset.key];
     setReviewed(rev);
-    renderProgress();
+    const exam = EXAMS.find(e=>e.id===currentExamId);
+    renderNav(exam);
+    renderDomains(exam);
+    renderTracks();
     return;
   }
   const qbtn = e.target.closest('.qbtn');
@@ -662,49 +1035,30 @@ document.addEventListener('click', e=>{
     qbtn.textContent = ans.classList.contains('show') ? 'Hide answer' : 'Show answer';
   }
 });
-renderProgress();
 
 /* ---------- Mock exam mode ---------- */
-const QUESTION_POOL = [];
-DOMAINS.forEach(d=>{
-  d.qs.forEach(q=>{
-    QUESTION_POOL.push({domainId:d.id, domainN:d.n, domainTitle:d.title, ...q});
-  });
-});
-const EXAM_SECONDS = 53*60;
-const BEST_KEY = 'ccarp-best-score';
-
-function shuffle(arr){
-  const a = arr.slice();
-  for(let i=a.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-  return a;
-}
-
 let examQs = [];
-let examTimeLeft = EXAM_SECONDS;
+let examTimeLeft = 0;
 let examTimerId = null;
 let examSubmitted = false;
 
-function showBestScore(){
-  const best = localStorage.getItem(BEST_KEY);
-  const el = document.getElementById('best-score');
-  el.innerHTML = best ? `Best: <b>${best}%</b>` : '';
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
 }
-showBestScore();
+function formatTime(s){ const m = Math.floor(s/60), sec = s%60; return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0'); }
 
-function formatTime(s){
-  const m = Math.floor(s/60), sec = s%60;
-  return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');
+function buildPool(exam){
+  const pool = [];
+  exam.domains.forEach(d=>{ d.qs.forEach(q=>{ pool.push({domainId:d.id, domainN:d.n, domainTitle:d.title, ...q}); }); });
+  return pool;
 }
 
 function renderExamQuestions(){
-  const wrap = document.getElementById('exam-questions');
-  wrap.innerHTML = examQs.map((q,i)=>`
+  document.getElementById('exam-questions').innerHTML = examQs.map((q,i)=>`
     <div class="eq" id="eq-${i}">
-      <div class="eq-tag">Domain ${q.domainN} · ${q.domainTitle.replace(/&amp;/g,'&')}</div>
+      <div class="eq-tag">Domain ${q.domainN} · ${q.domainTitle}</div>
       <div class="stem">${i+1}. ${q.stem}</div>
       ${q.opts.map((o,oi)=>`
         <label data-eq="${i}" data-oi="${oi}">
@@ -716,15 +1070,16 @@ function renderExamQuestions(){
     </div>
   `).join('');
 }
-
 function updateAnsweredCount(){
   const answered = examQs.filter((q,i)=>document.querySelector(`input[name="eq${i}"]:checked`)).length;
   document.getElementById('exam-answered').textContent = `${answered} / ${examQs.length} answered`;
 }
 
 function startExam(){
-  examQs = shuffle(QUESTION_POOL);
-  examTimeLeft = EXAM_SECONDS;
+  const exam = EXAMS.find(e=>e.id===currentExamId);
+  const {minutes} = examQuestionMeta(exam);
+  examQs = shuffle(buildPool(exam));
+  examTimeLeft = minutes*60;
   examSubmitted = false;
   document.getElementById('exam-results').innerHTML = '';
   document.getElementById('dashboard').classList.add('hidden');
@@ -740,11 +1095,8 @@ function startExam(){
   examTimerId = setInterval(()=>{
     examTimeLeft--;
     if(examTimeLeft<=0){
-      examTimeLeft=0;
-      timerEl.textContent = formatTime(0);
-      clearInterval(examTimerId);
-      submitExam();
-      return;
+      examTimeLeft=0; timerEl.textContent = formatTime(0);
+      clearInterval(examTimerId); submitExam(); return;
     }
     timerEl.textContent = formatTime(examTimeLeft);
     if(examTimeLeft<=180) timerEl.classList.add('low');
@@ -761,9 +1113,9 @@ function submitExam(){
   if(examSubmitted) return;
   examSubmitted = true;
   clearInterval(examTimerId);
-
+  const exam = EXAMS.find(e=>e.id===currentExamId);
   const perDomain = {};
-  DOMAINS.forEach(d=>{ perDomain[d.id] = {title:d.title, n:d.n, correct:0, total:0}; });
+  exam.domains.forEach(d=>{ perDomain[d.id] = {title:d.title, n:d.n, correct:0, total:0}; });
 
   let correctCount = 0;
   examQs.forEach((q,i)=>{
@@ -786,19 +1138,16 @@ function submitExam(){
   });
 
   const pct = Math.round(correctCount/examQs.length*100);
-  const prevBest = parseInt(localStorage.getItem(BEST_KEY)||'0',10);
-  if(pct>prevBest){ localStorage.setItem(BEST_KEY, String(pct)); }
-  showBestScore();
+  const key = BEST_PREFIX+exam.id;
+  const prevBest = parseInt(localStorage.getItem(key)||'0',10);
+  if(pct>prevBest){ localStorage.setItem(key, String(pct)); }
+  showBestScore(exam);
 
   const passed = pct>=80;
-  const rows = DOMAINS.map(d=>{
+  const rows = exam.domains.map(d=>{
     const p = perDomain[d.id];
     const dpct = p.total? Math.round(p.correct/p.total*100):0;
-    return `<tr>
-      <td>D${p.n} · ${d.title.replace(/&amp;/g,'&')}</td>
-      <td class="num">${p.correct}/${p.total}</td>
-      <td class="bar-cell"><div class="mini-bar"><i style="width:${dpct}%"></i></div></td>
-    </tr>`;
+    return `<tr><td>D${p.n} · ${d.title}</td><td class="num">${p.correct}/${p.total}</td><td class="bar-cell"><div class="mini-bar"><i style="width:${dpct}%"></i></div></td></tr>`;
   }).join('');
 
   document.getElementById('exam-results').innerHTML = `
@@ -807,11 +1156,8 @@ function submitExam(){
         <span class="score">${pct}%</span>
         <span class="verdict ${passed?'pass':'fail'}">${passed? 'On track' : 'Below target'}</span>
       </div>
-      <p class="note">${correctCount} of ${examQs.length} correct. This self-test uses an 80% threshold as a study proxy with headroom above the real cut score — the actual CCAR-P exam is scored on a scaled 100–1000 range (pass at 720) that isn't a straight percent-correct conversion. Review any domain below ~75% here before scheduling the real exam.</p>
-      <table>
-        <tr><th>Domain</th><th>Correct</th><th>Coverage</th></tr>
-        ${rows}
-      </table>
+      <p class="note">${correctCount} of ${examQs.length} correct. This self-test uses an 80% threshold as a study proxy with headroom above the real cut score — the actual exam is scored on a scaled 100–1000 range (pass at ${exam.passScore}) that isn't a straight percent-correct conversion. Review any domain below ~75% here before scheduling the real exam.</p>
+      <table><tr><th>Domain</th><th>Correct</th><th>Coverage</th></tr>${rows}</table>
     </div>
   `;
   window.scrollTo(0,0);
@@ -819,10 +1165,10 @@ function submitExam(){
 
 document.getElementById('start-exam-btn').addEventListener('click', startExam);
 document.getElementById('exam-exit-btn').addEventListener('click', exitExam);
-document.getElementById('exam-submit-btn').addEventListener('click', ()=>{
-  if(!examSubmitted) submitExam();
-});
+document.getElementById('exam-submit-btn').addEventListener('click', ()=>{ if(!examSubmitted) submitExam(); });
 document.getElementById('exam-questions').addEventListener('change', updateAnsweredCount);
+
+selectExam(currentExamId);
 </script>
 </body>
 </html>

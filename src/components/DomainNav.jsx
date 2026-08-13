@@ -40,7 +40,9 @@ export function DomainNav({ exam, activeId, reviewedIds, onJump }) {
               <span className="nav-dot" aria-hidden="true">
                 {isDone ? '✓' : ''}
               </span>
-              <span>{domain.title}</span>
+              <span className="nav-label" title={domain.title}>
+                {domain.title}
+              </span>
               <span className="nav-wt">{domain.weight}</span>
             </button>
           );

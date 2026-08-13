@@ -486,8 +486,17 @@
   cursor: pointer;
   color: var(--ink-dim);
   font-size: 0.86rem;
-  white-space: nowrap;
   width: 100%;
+  min-width: 0;
+}
+
+/* Long domain titles truncate rather than colliding with the weight. */
+.nav-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nav-item:hover {
@@ -523,15 +532,22 @@
 }
 
 .nav-wt {
-  margin-left: auto;
+  flex: none;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--ink-dim);
+  font-variant-numeric: tabular-nums;
 }
 
+/* On the horizontal mobile nav, let each pill size to its own label. */
 @media (max-width: 900px) {
-  .nav-wt {
-    margin-left: 4px;
+  .nav-item {
+    width: auto;
+  }
+
+  .nav-label {
+    flex: none;
+    overflow: visible;
   }
 }
 

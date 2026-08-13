@@ -1,0 +1,11 @@
+# Secrets
+.vercel-token
+.env
+.env.local
+
+# Vercel
+.vercel/
+
+# OS
+.DS_Store
+Thumbs.db

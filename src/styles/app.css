@@ -32,7 +32,10 @@
   display: flex;
   gap: 4px;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   margin-left: auto;
+  /* Without this the row widens the bar instead of scrolling inside it. */
+  min-width: 0;
 }
 
 .topbar-exam {
@@ -406,10 +409,20 @@
   padding: 32px 0 80px;
 }
 
+/*
+ * Grid items default to min-width:auto, which lets a wide child push the
+ * track (and the page) sideways instead of scrolling inside it. Both
+ * columns must opt out for the nav's overflow-x to actually contain it.
+ */
+.layout > * {
+  min-width: 0;
+}
+
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
     gap: 20px;
+    padding: 20px 0 64px;
   }
 }
 
@@ -429,6 +442,7 @@
     padding: 10px 0;
     border-bottom: 1px solid var(--line);
     z-index: 20;
+    overflow: hidden;
   }
 }
 
@@ -469,8 +483,24 @@
 @media (max-width: 900px) {
   .nav-list {
     flex-direction: row;
+    flex-wrap: nowrap;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
     gap: 8px;
+    /* Bleed to the screen edges so the row reads as scrollable. */
+    margin: 0 -16px;
+    padding: 2px 16px 8px;
+  }
+
+  .nav-list::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .nav-list::-webkit-scrollbar-thumb {
+    background: var(--line);
+    border-radius: 2px;
   }
 }
 
@@ -539,15 +569,28 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* On the horizontal mobile nav, let each pill size to its own label. */
+/* On the horizontal mobile nav, each pill sizes to its own label. */
 @media (max-width: 900px) {
   .nav-item {
     width: auto;
+    flex: none;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    scroll-snap-align: start;
+    padding: 9px 12px;
+    /* Comfortable tap target on touch screens. */
+    min-height: 44px;
+  }
+
+  .nav-item.current {
+    border-color: var(--signal);
   }
 
   .nav-label {
     flex: none;
     overflow: visible;
+    max-width: 46vw;
+    text-overflow: clip;
   }
 }
 
@@ -989,6 +1032,139 @@
 
 .foot p {
   max-width: 72ch;
+}
+
+/* ---------------- Small screens ---------------- */
+@media (max-width: 640px) {
+  .wrap {
+    padding: 0 16px;
+  }
+
+  /* Top bar: brand shrinks, exam codes scroll horizontally. */
+  .topbar-inner {
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .brand {
+    font-size: 0.95rem;
+  }
+
+  .topbar-exams {
+    min-width: 0;
+    gap: 2px;
+    padding-bottom: 2px;
+  }
+
+  .topbar-exam {
+    padding: 8px 9px;
+    font-size: 0.72rem;
+  }
+
+  .hero {
+    padding: 24px 0 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+  }
+
+  .pathway {
+    margin-top: 20px;
+  }
+
+  .track-blurb {
+    min-height: 0;
+  }
+
+  /* Stat strip stays readable rather than cramming five columns. */
+  .stat-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat {
+    padding: 12px 13px;
+  }
+
+  .stat-n {
+    font-size: 1.4rem;
+  }
+
+  .domain {
+    padding: 20px 16px 22px;
+    border-radius: 8px;
+  }
+
+  .domain-head {
+    gap: 12px;
+  }
+
+  .domain-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .notes li,
+  .obj-list li {
+    font-size: 0.92rem;
+  }
+
+  .selftest,
+  .eq {
+    padding: 14px 13px;
+  }
+
+  /* Exam runner controls stay reachable with one thumb. */
+  .exam-bar {
+    padding: 12px 0;
+  }
+
+  .exam-bar-row {
+    gap: 10px;
+  }
+
+  .timer {
+    font-size: 1.35rem;
+  }
+
+  .exam-bar-row .btn-primary,
+  .exam-bar-row .btn-ghost {
+    padding: 10px 14px;
+    min-height: 44px;
+  }
+
+  .mark-btn,
+  .reveal-btn {
+    min-height: 40px;
+  }
+
+  .results {
+    padding: 18px 16px;
+  }
+
+  .score {
+    font-size: 2.1rem;
+  }
+
+  .exam-cta {
+    padding: 14px 16px;
+  }
+
+  .exam-cta .btn-primary {
+    width: 100%;
+    text-align: center;
+    min-height: 46px;
+    padding: 13px 20px;
+  }
+
+  .to-top {
+    right: 14px;
+    bottom: 14px;
+  }
 }
 
 /* ---------------- Back-to-top ---------------- */

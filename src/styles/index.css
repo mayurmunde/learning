@@ -74,6 +74,15 @@ body {
   line-height: 1.6;
 }
 
+/* Media and embeds never widen the page on a narrow screen. */
+img,
+svg,
+video,
+canvas,
+table {
+  max-width: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

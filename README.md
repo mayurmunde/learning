@@ -81,3 +81,20 @@ src/
 ## Deployment
 
 Deployed on Vercel as a Vite static build. `vercel.json` rewrites all paths to `index.html` so client-side routes resolve on direct navigation and refresh.
+
+Note: the repo is **not** connected to Vercel's Git integration — pushing to GitHub does not deploy. See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for the publish step.
+
+## Documentation
+
+| Doc | Covers |
+| --- | --- |
+| [`CLAUDE.md`](CLAUDE.md) | Agent context: content boundaries, schema, conventions, gotchas |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Data flow, routing, scroll-spy, mock-exam internals |
+| [`docs/CONTENT-GUIDE.md`](docs/CONTENT-GUIDE.md) | Adding or editing exam content and questions |
+| [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) | Deploy runbook, custom domain, troubleshooting |
+
+`.claude/rules/` holds path-scoped conventions that load automatically when editing matching files.
+
+## Scope and sourcing
+
+An independent study aid, not an official Anthropic product. Notes are original writing derived from the publicly available exam guide PDFs; self-test questions are original and are not real exam items. Nothing here reproduces Anthropic's paid course content.
